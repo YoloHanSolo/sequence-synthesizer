@@ -1,22 +1,41 @@
 import { getBezierPath, EdgeLabelRenderer, BaseEdge } from '@xyflow/react'
 
+/** Build an SVG path for a self-loop above the node */
+function selfLoopPath(cx, cy, r = 36) {
+  // Circle arc sitting above the node centre
+  const x1 = cx - r
+  const x2 = cx + r
+  const y  = cy - 10
+  return {
+    path: `M ${x1} ${y} C ${x1} ${y - r * 2} ${x2} ${y - r * 2} ${x2} ${y}`,
+    labelX: cx,
+    labelY: cy - 10 - r * 2 + 6,
+  }
+}
+
 export default function ConnectionEdge({
   id, sourceX, sourceY, targetX, targetY,
   sourcePosition, targetPosition,
   data, markerEnd, markerStart,
 }) {
-  const [edgePath, labelX, labelY] = getBezierPath({
-    sourceX, sourceY, sourcePosition,
-    targetX, targetY, targetPosition,
-  })
+  const isSelf = data?.selfLoop
+
+  let edgePath, labelX, labelY
+  if (isSelf) {
+    const s = selfLoopPath(sourceX, sourceY)
+    edgePath = s.path; labelX = s.labelX; labelY = s.labelY
+  } else {
+    ;[edgePath, labelX, labelY] = getBezierPath({
+      sourceX, sourceY, sourcePosition,
+      targetX, targetY, targetPosition,
+    })
+  }
 
   const hasFwd  = data?.forward?.length  > 0
   const hasBwd  = data?.backward?.length > 0
   const pulse   = data?.pulse
   const active  = data?.active
-
   const opCount = (data?.forward?.length ?? 0) + (data?.backward?.length ?? 0)
-
   const lineColor = active ? '#ffd60a' : '#2a2a4a'
 
   return (
@@ -24,8 +43,8 @@ export default function ConnectionEdge({
       <BaseEdge
         id={id}
         path={edgePath}
-        markerEnd={hasFwd ? markerEnd : undefined}
-        markerStart={hasBwd ? markerStart : undefined}
+        markerEnd={isSelf || hasFwd ? markerEnd : undefined}
+        markerStart={!isSelf && hasBwd ? markerStart : undefined}
         style={{
           stroke: lineColor,
           strokeWidth: active ? 2 : 1.5,
@@ -48,7 +67,6 @@ export default function ConnectionEdge({
         />
       )}
 
-      {/* Info icon — only visual affordance on the edge */}
       <EdgeLabelRenderer>
         <div
           style={{

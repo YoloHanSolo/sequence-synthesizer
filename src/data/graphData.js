@@ -5,6 +5,33 @@
 //   Poly→Seed            = DL1   e.g. DL1×[0,1,2,3]=[0,1,0,0] ✓
 
 export const INITIAL_NODES = [
+  // ── 4th alternating (top of each column) ─────────────────────────────────
+  // DL1×alt3=[1,-4,16,-64]=alt4 ✓  DL1×nalt3=[-1,4,-16,64]=nalt4 ✓
+  {
+    id: 'alt4',
+    type: 'seqNode',
+    position: { x: 0, y: -60 },
+    data: {
+      label: '(-1)^x · 4^x',
+      formula: '(-1)^x · 4^x = (-4)^x',
+      values: [1, -4, 16, -64],
+      tier: 'upper',
+      color: 'purple',
+    },
+  },
+  {
+    id: 'nalt4',
+    type: 'seqNode',
+    position: { x: 160, y: -60 },
+    data: {
+      label: '-(-1)^x · 4^x',
+      formula: '-(-1)^x · 4^x',
+      values: [-1, 4, -16, 64],
+      tier: 'upper',
+      color: 'purple',
+    },
+  },
+
   // ── Negated alternating column (2nd column, verified via H1) ─────────────
   // H1×[1,0,0,0]=[-1,1,-1,1]=nalt1 ✓  H1×[-1,1,-1,1]=[1,0,0,0]=zero ✓
   // H1×[1,1,1,1]=[-1,2,-4,8]=nalt2 ✓
@@ -12,7 +39,7 @@ export const INITIAL_NODES = [
   {
     id: 'nalt3',
     type: 'seqNode',
-    position: { x: 240, y: 60 },
+    position: { x: 160, y: 60 },
     data: {
       label: '-(-1)^x · 3^x',
       formula: '-(-1)^x · 3^x = -(-3)^x',
@@ -24,7 +51,7 @@ export const INITIAL_NODES = [
   {
     id: 'nalt2',
     type: 'seqNode',
-    position: { x: 240, y: 180 },
+    position: { x: 160, y: 180 },
     data: {
       label: '-(-1)^x · 2^x',
       formula: '-(-1)^x · 2^x',
@@ -36,7 +63,7 @@ export const INITIAL_NODES = [
   {
     id: 'nalt1',
     type: 'seqNode',
-    position: { x: 240, y: 295 },
+    position: { x: 160, y: 295 },
     data: {
       label: '-(-1)^x · 1^x',
       formula: '-(-1)^x',
@@ -50,7 +77,7 @@ export const INITIAL_NODES = [
   {
     id: 'alt3',
     type: 'seqNode',
-    position: { x: 80, y: 60 },
+    position: { x: 0, y: 60 },
     data: {
       label: '(-1)^x · 3^x',
       formula: '(-1)^x · 3^x = (-3)^x',
@@ -62,7 +89,7 @@ export const INITIAL_NODES = [
   {
     id: 'alt2',
     type: 'seqNode',
-    position: { x: 80, y: 180 },
+    position: { x: 0, y: 180 },
     data: {
       label: '(-1)^x · 2^x',
       formula: '(-1)^x · 2^x',
@@ -74,7 +101,7 @@ export const INITIAL_NODES = [
   {
     id: 'alt1',
     type: 'seqNode',
-    position: { x: 80, y: 295 },
+    position: { x: 0, y: 295 },
     data: {
       label: '(-1)^x · 1^x',
       formula: '(-1)^x',
@@ -134,11 +161,28 @@ export const INITIAL_NODES = [
     },
   },
 
-  // ── Periodic / right-of-seeds ─────────────────────────────────────────────
+  // ── Seed for x^4: [01436*] ────────────────────────────────────────────────
+  // DL1×x^4=[0,1,14,36] ✓  Pos×[0,1,14,36]=x^4 ✓
+  // SeedGen×s01660=[0,1,14,36] ✓ — continues SeedGen chain
+  {
+    id: 's01436',
+    type: 'seqNode',
+    position: { x: 880, y: 410 },
+    data: {
+      label: '[0,1,14,36,24,0*]',
+      formula: 'Stirling S(n,4)',
+      values: [0, 1, 14, 36],
+      tier: 'seed',
+      color: 'red',
+    },
+  },
+
+  // ── Pattern-seed rows (top-right cluster, each seed owns a horizontal row) ─
+  //   Row 3  y=400:  [01]*  → F_n → F_n²
   {
     id: 'per01',
     type: 'seqNode',
-    position: { x: 880, y: 370 },
+    position: { x: 500, y: 130 },
     data: {
       label: '[01]*',
       formula: 'periodic 01',
@@ -147,10 +191,23 @@ export const INITIAL_NODES = [
       color: 'red',
     },
   },
+  //   Row 4  y=560:  [0*] → [10]*  → !n → n!
+  {
+    id: 'zstar',
+    type: 'seqNode',
+    position: { x: -120, y: 410 },
+    data: {
+      label: '[0*]',
+      formula: 'zero sequence',
+      values: [0, 0, 0, 0],
+      tier: 'seed',
+      color: 'red',
+    },
+  },
   {
     id: 'per10',
     type: 'seqNode',
-    position: { x: 880, y: 450 },
+    position: { x: 500, y: -30 },
     data: {
       label: '[10]*',
       formula: 'periodic 10',
@@ -160,11 +217,11 @@ export const INITIAL_NODES = [
     },
   },
 
-  // ── Right upper cluster ───────────────────────────────────────────────────
+  //   Row 2  y=240:  [110*] → C[01²]*
   {
     id: 'n110',
     type: 'seqNode',
-    position: { x: 880, y: 280 },
+    position: { x: 500, y: -190 },
     data: {
       label: '[110*]',
       formula: 'indicator {0,1}',
@@ -176,7 +233,7 @@ export const INITIAL_NODES = [
   {
     id: 'cfib',
     type: 'seqNode',
-    position: { x: 1060, y: 220 },
+    position: { x: 720, y: -190 },
     data: {
       label: 'C[01²]*',
       formula: 'conv([01]*²)',
@@ -188,7 +245,7 @@ export const INITIAL_NODES = [
   {
     id: 'fib',
     type: 'seqNode',
-    position: { x: 1230, y: 220 },
+    position: { x: 720, y: 130 },
     data: {
       label: 'F_n  Fibonacci',
       formula: 'F(n)=F(n-1)+F(n-2)',
@@ -200,7 +257,7 @@ export const INITIAL_NODES = [
   {
     id: 'fib2',
     type: 'seqNode',
-    position: { x: 1400, y: 220 },
+    position: { x: 940, y: 130 },
     data: {
       label: 'F_n^2',
       formula: 'F_n^2',
@@ -214,7 +271,7 @@ export const INITIAL_NODES = [
   {
     id: 'subfact',
     type: 'seqNode',
-    position: { x: 1230, y: 450 },
+    position: { x: 720, y: -30 },
     data: {
       label: '!n  Subfactorial',
       formula: '!n=(n-1)(!(n-1)+!(n-2))',
@@ -226,7 +283,7 @@ export const INITIAL_NODES = [
   {
     id: 'fact',
     type: 'seqNode',
-    position: { x: 1400, y: 450 },
+    position: { x: 940, y: -30 },
     data: {
       label: 'n!  Factorial',
       formula: 'n!',
@@ -242,7 +299,7 @@ export const INITIAL_NODES = [
   {
     id: 'e2x',
     type: 'seqNode',
-    position: { x: 80, y: 670 },
+    position: { x: 80, y: 625 },
     data: {
       label: '2^x',
       formula: '2^x',
@@ -254,7 +311,7 @@ export const INITIAL_NODES = [
   {
     id: 'e3x',
     type: 'seqNode',
-    position: { x: 80, y: 770 },
+    position: { x: 80, y: 725 },
     data: {
       label: '3^x',
       formula: '3^x',
@@ -264,11 +321,54 @@ export const INITIAL_NODES = [
     },
   },
 
+  // ── 4^x (4th positive exponential) ───────────────────────────────────────
+  // Pos×3^x=[1,4,16,64]=4^x ✓  DL1×4^x=[1,3,9,27]=3^x ✓
+  {
+    id: 'e4x',
+    type: 'seqNode',
+    position: { x: 80, y: 825 },
+    data: {
+      label: '4^x',
+      formula: '4^x',
+      values: [1, 4, 16, 64],
+      tier: 'poly',
+      color: 'blue',
+    },
+  },
+
+  // ── Triangular number seed + sequence ────────────────────────────────────
+  // Pos×[0,1,1,0]=[0,1,3,6]=T_n ✓  DL1×[0,1,3,6]=[0,1,1,0] ✓
+  {
+    id: 's0110',
+    type: 'seqNode',
+    //   Row 1  y=80:   [0110*] → T_n
+    position: { x: 500, y: -350 },
+    data: {
+      label: '[0110*]',
+      formula: 'twin spark seed',
+      values: [0, 1, 1, 0],
+      tier: 'seed',
+      color: 'red',
+    },
+  },
+  {
+    id: 'tri',
+    type: 'seqNode',
+    position: { x: 720, y: -350 },
+    data: {
+      label: 'T_n  (triangular)',
+      formula: 'x(x+1)/2',
+      values: [0, 1, 3, 6],
+      tier: 'poly',
+      color: 'blue',
+    },
+  },
+
   // ── Polynomial row (below seeds, same x as their seed) ───────────────────
   {
     id: 'x0',
     type: 'seqNode',
-    position: { x: 80, y: 570 },
+    position: { x: 80, y: 525 },
     data: {
       label: '1^x = x^0',
       formula: 'x^0 = 1',
@@ -280,7 +380,7 @@ export const INITIAL_NODES = [
   {
     id: 'x1',
     type: 'seqNode',
-    position: { x: 280, y: 570 },
+    position: { x: 280, y: 525 },
     data: {
       label: 'x^1',
       formula: 'x^1',
@@ -292,7 +392,7 @@ export const INITIAL_NODES = [
   {
     id: 'x2',
     type: 'seqNode',
-    position: { x: 480, y: 570 },
+    position: { x: 480, y: 525 },
     data: {
       label: 'x^2',
       formula: 'x^2',
@@ -304,7 +404,7 @@ export const INITIAL_NODES = [
   {
     id: 'x3',
     type: 'seqNode',
-    position: { x: 680, y: 570 },
+    position: { x: 680, y: 525 },
     data: {
       label: 'x^3',
       formula: 'x^3',
@@ -314,12 +414,33 @@ export const INITIAL_NODES = [
     },
   },
 
-  // ── Extended poly chain (below x0, continuing down-left) ─────────────────
-  // x^2 and x^3 nodes are shared — extra edges added in INITIAL_EDGES
-  // x^0 also connects DOWN to x^2, x^3 via ×x operations (null operator)
+  // ── x^4 (4th polynomial) ─────────────────────────────────────────────────
+  {
+    id: 'x4',
+    type: 'seqNode',
+    position: { x: 880, y: 525 },
+    data: {
+      label: 'x^4',
+      formula: 'x^4',
+      values: [0, 1, 16, 81],
+      tier: 'poly',
+      color: 'blue',
+    },
+  },
 ]
 
 export const INITIAL_EDGES = [
+  // ── 4th alternating nodes ────────────────────────────────────────────────
+  { id: 'e-alt3-alt4',   source: 'alt3',  target: 'alt4',  label: '∇ DL1', operator: 'DL1' },
+  { id: 'e-alt4-alt3',   source: 'alt4',  target: 'alt3',  label: '⊕ Pos', operator: 'Pos' },
+  { id: 'e-nalt3-nalt4', source: 'nalt3', target: 'nalt4', label: '∇ DL1', operator: 'DL1' },
+  { id: 'e-nalt4-nalt3', source: 'nalt4', target: 'nalt3', label: '⊕ Pos', operator: 'Pos' },
+  // 4^x chain
+  { id: 'e-e3x-e4x',    source: 'e3x',  target: 'e4x',  label: '⊕ Pos', operator: 'Pos' },
+  { id: 'e-e4x-e3x',    source: 'e4x',  target: 'e3x',  label: '∇ DL1', operator: 'DL1' },
+  // x^4 poly chain
+  { id: 'e-x3-x4-P', source: 'x3', target: 'x4', label: 'P', operator: 'P' },
+
   // ── Alternating column: ∇=DL1 going UP, ⊕=Pos going DOWN ────────────────
   // (DL1×alt2=[1,-3,9,-27]=alt3 ✓  Pos×alt3=[1,-2,4,-8]=alt2 ✓)
   { id: 'e-alt2-alt3', source: 'alt2', target: 'alt3', label: '∇ DL1', operator: 'DL1' },
@@ -348,14 +469,24 @@ export const INITIAL_EDGES = [
   { id: 'e-s01660-x3', source: 's01660', target: 'x3',    label: '⊕ Pos', operator: 'Pos' },
   { id: 'e-x3-s01660', source: 'x3',    target: 's01660', label: '∇ DL1', operator: 'DL1' },
 
-  // ── Poly chain below x0: ×x multiplication (no single 4×4 matrix) ────────
-  { id: 'e-x0-x2-chain', source: 'x0', target: 'x2', label: '×x', operator: null },
-  { id: 'e-x2-x3-chain', source: 'x2', target: 'x3', label: '×x', operator: null },
+  // ── Poly chain via P (diagonal ×x matrix, P×x^k=x^{k+1} ✓) ─────────────
+  { id: 'e-x0-x1-P', source: 'x0', target: 'x1', label: 'P', operator: 'P' },
+  { id: 'e-x1-x2-P', source: 'x1', target: 'x2', label: 'P', operator: 'P' },
+  { id: 'e-x2-x3-P', source: 'x2', target: 'x3', label: 'P', operator: 'P' },
+
+  // ── Triangular numbers: [0110]* ↔ T_n ────────────────────────────────────
+  { id: 'e-s0110-tri', source: 's0110', target: 'tri', label: '⊕ Pos', operator: 'Pos' },
+  { id: 'e-tri-s0110', source: 'tri', target: 's0110', label: '∇ DL1', operator: 'DL1' },
+
+  // ── Seed for x^4 ↔ x^4 ──────────────────────────────────────────────────
+  { id: 'e-s01436-x4', source: 's01436', target: 'x4',     label: '⊕ Pos', operator: 'Pos'     },
+  { id: 'e-x4-s01436', source: 'x4',     target: 's01436', label: '∇ DL1', operator: 'DL1'     },
 
   // ── Seed-Generator M: steps horizontally along seed row ─────────────────
-  // SeedGen×010*=[0,1,2,0]=0120* ✓  SeedGen×0120*=[0,1,6,6]=01660* ✓
-  { id: 'e-s010-s0120',   source: 's010',   target: 's0120',  label: 'M', operator: 'SeedGen' },
-  { id: 'e-s0120-s01660', source: 's0120',  target: 's01660', label: 'M', operator: 'SeedGen' },
+  // SeedGen×010*=[0,1,2,0]=0120* ✓  SeedGen×0120*=[0,1,6,6]=01660* ✓  SeedGen×01660*=[0,1,14,36]=01436* ✓
+  { id: 'e-s010-s0120',    source: 's010',   target: 's0120',   label: 'M', operator: 'SeedGen' },
+  { id: 'e-s0120-s01660',  source: 's0120',  target: 's01660',  label: 'M', operator: 'SeedGen' },
+  { id: 'e-s01660-s01436', source: 's01660', target: 's01436',  label: 'M', operator: 'SeedGen' },
 
   // ── [01]* connections ─────────────────────────────────────────────────────
   // 010* ↔ [01]*: bidirectional Δ toggle
@@ -373,6 +504,9 @@ export const INITIAL_EDGES = [
   { id: 'e-n110-per01', source: 'n110', target: 'per01', label: 'Δ', operator: null },
   { id: 'e-n110-cfib',  source: 'n110', target: 'cfib',  label: 'Δ', operator: null },
   { id: 'e-cfib-n110',  source: 'cfib', target: 'n110',  label: 'Δ', operator: null },
+
+  // ── C[01²]* self-loop via Δ ───────────────────────────────────────────────
+  { id: 'e-cfib-self', source: 'cfib', target: 'cfib', label: 'Δ', operator: null },
 
   // ── C[01²]* ↔ F_n ─────────────────────────────────────────────────────────
   { id: 'e-cfib-fib',  source: 'cfib', target: 'fib', label: 'Δ', operator: null },

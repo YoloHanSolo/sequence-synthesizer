@@ -25,12 +25,13 @@ function buildMergedEdges(rawEdges) {
   const map = {}
 
   for (const e of rawEdges) {
-    const [a, b] = [e.source, e.target].sort()
-    const key = `${a}~~${b}`
+    const isSelf = e.source === e.target
+    const [a, b] = isSelf ? [e.source, e.source] : [e.source, e.target].sort()
+    const key = isSelf ? `${a}~~self` : `${a}~~${b}`
     if (!map[key]) {
-      map[key] = { nodeAId: a, nodeBId: b, forward: [], backward: [] }
+      map[key] = { nodeAId: a, nodeBId: b, forward: [], backward: [], selfLoop: isSelf }
     }
-    const slot = e.source === a ? 'forward' : 'backward'
+    const slot = isSelf || e.source === a ? 'forward' : 'backward'
     map[key][slot].push({ label: e.label, operator: e.operator ?? null })
   }
 
@@ -41,7 +42,7 @@ function buildMergedEdges(rawEdges) {
     type: 'connection',
     markerEnd:   { type: MarkerType.ArrowClosed, color: '#2a2a4a', width: 14, height: 14 },
     markerStart: { type: MarkerType.ArrowClosed, color: '#2a2a4a', width: 14, height: 14 },
-    data: { ...conn, pulse: false, active: false },
+    data: { ...conn, pulse: false, active: false, selfLoop: conn.selfLoop ?? false },
   }))
 }
 

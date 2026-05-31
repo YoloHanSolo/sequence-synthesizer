@@ -10,6 +10,9 @@ export const MATRICES = {
   // 4×4 truncation of the 5×5 Seed-Generator M
   // M×010* = 0120* ✓   M×0120* = 01660* ✓
   SeedGen: [[0,0,0,0],[0,1,0,0],[0,2,2,0],[0,0,3,3]],
+  // 4×4 truncation of 5×5 diagonal P (multiply-by-x)
+  // P×x^k = x^(k+1): P×x^0=x^1 ✓  P×x^1=x^2 ✓  P×x^2=x^3 ✓  P×x^3=x^4 ✓
+  P:       [[0,0,0,0],[0,1,0,0],[0,0,2,0],[0,0,0,3]],
 }
 
 export const MATRIX_LABELS = Object.keys(MATRICES)
@@ -24,7 +27,17 @@ export const MATRIX_DESCRIPTIONS = {
   V0:      'c^x → -(1+c)^x',
   V1:      'c^x → (1-c)^x',
   SeedGen: 'seed_k → seed_{k+1}',
+  P:       'x^k → x^{k+1}  (×x)',
 }
+
+/** Full 5×5 P matrix (for display only) */
+export const P_FULL_5x5 = [
+  [0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 0],
+  [0, 0, 2, 0, 0],
+  [0, 0, 0, 3, 0],
+  [0, 0, 0, 0, 4],
+]
 
 /** Full 5×5 Seed-Generator matrix (for display only) */
 export const SEEDGEN_FULL_5x5 = [

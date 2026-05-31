@@ -1,5 +1,5 @@
 import React from 'react'
-import { MATRICES, SEEDGEN_FULL_5x5 } from '../math/matrices'
+import { MATRICES, SEEDGEN_FULL_5x5, P_FULL_5x5 } from '../math/matrices'
 import { M, mathFmt } from '../math/format.jsx'
 
 const COLOR_MAP = {
@@ -136,16 +136,17 @@ function VecDisplay({ vec, accent }) {
 function MatrixMini({ M: mat, accent, opName }) {
   const [open, setOpen] = React.useState(false)
   const isSeedGen = opName === 'SeedGen'
-  const displayMat = isSeedGen ? SEEDGEN_FULL_5x5 : mat
+  const isP       = opName === 'P'
+  const displayMat = isSeedGen ? SEEDGEN_FULL_5x5 : isP ? P_FULL_5x5 : mat
 
   return (
     <div className="mt-1">
       <button onClick={() => setOpen(o => !o)} style={{ color: '#3a3a5a', fontSize: 9 }} className="flex items-center gap-1">
-        {open ? '▼' : '▶'} {isSeedGen ? 'full 5×5 matrix M' : 'matrix'}
+        {open ? '▼' : '▶'} {isSeedGen ? 'full 5×5 matrix M' : isP ? 'full 5×5 matrix P' : 'matrix'}
       </button>
       {open && (
         <div className="mt-1">
-          {isSeedGen && (
+          {(isSeedGen || isP) && (
             <div className="mb-1" style={{ color: '#3a3a5a', fontSize: 9 }}>
               (4×4 truncation used for computation)
             </div>
