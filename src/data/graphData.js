@@ -236,6 +236,34 @@ export const INITIAL_NODES = [
     },
   },
 
+  // ── Positive exponential column (below x0, same x) ──────────────────────
+  // Pos×1^x=2^x ✓  Pos×2^x=3^x ✓  DL1×3^x=2^x ✓  DL1×2^x=1^x ✓
+  // Cross: H0×2^x=alt3 ✓  H1×2^x=nalt3 ✓
+  {
+    id: 'e2x',
+    type: 'seqNode',
+    position: { x: 80, y: 670 },
+    data: {
+      label: '2^x',
+      formula: '2^x',
+      values: [1, 2, 4, 8],
+      tier: 'poly',
+      color: 'blue',
+    },
+  },
+  {
+    id: 'e3x',
+    type: 'seqNode',
+    position: { x: 80, y: 770 },
+    data: {
+      label: '3^x',
+      formula: '3^x',
+      values: [1, 3, 9, 27],
+      tier: 'poly',
+      color: 'blue',
+    },
+  },
+
   // ── Polynomial row (below seeds, same x as their seed) ───────────────────
   {
     id: 'x0',
@@ -362,6 +390,15 @@ export const INITIAL_EDGES = [
   // ── [10]* → !n → n! (from image: arrows pointing left = DL1 direction) ───
   { id: 'e-fact-per10',    source: 'fact',    target: 'per10',   label: '∇ DL1', operator: 'DL1' },
   { id: 'e-subfact-per10', source: 'subfact', target: 'per10',   label: 'Δ',     operator: null  },
+
+  // ── Positive exponential chain: 1^x ↔ 2^x ↔ 3^x ────────────────────────
+  { id: 'e-x0-e2x',   source: 'x0',  target: 'e2x', label: '⊕ Pos', operator: 'Pos' },
+  { id: 'e-e2x-x0',   source: 'e2x', target: 'x0',  label: '∇ DL1', operator: 'DL1' },
+  { id: 'e-e2x-e3x',  source: 'e2x', target: 'e3x', label: '⊕ Pos', operator: 'Pos' },
+  { id: 'e-e3x-e2x',  source: 'e3x', target: 'e2x', label: '∇ DL1', operator: 'DL1' },
+  // Cross-links to alternating world
+  { id: 'e-e2x-alt3',  source: 'e2x', target: 'alt3',  label: 'H0', operator: 'H0' },
+  { id: 'e-e2x-nalt3', source: 'e2x', target: 'nalt3', label: 'H1', operator: 'H1' },
 
   // ── Negated alternating column ────────────────────────────────────────────
   // DL1/Pos chain (same structure as alt column)
