@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0d0d0f;
+  color: #c0c0e0;
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  overflow: hidden;
+}
+
+/* React Flow overrides */
+.react-flow__background {
+  background-color: #0d0d0f;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+.react-flow__handle {
+  opacity: 0;
+}
+
+/* Neon glow utilities */
+.glow-red {
+  filter: drop-shadow(0 0 8px #ff2d55) drop-shadow(0 0 20px #ff2d5566);
+}
+.glow-blue {
+  filter: drop-shadow(0 0 8px #00d4ff) drop-shadow(0 0 20px #00d4ff66);
+}
+.glow-green {
+  filter: drop-shadow(0 0 8px #00ff88) drop-shadow(0 0 20px #00ff8866);
+}
+.glow-purple {
+  filter: drop-shadow(0 0 8px #bf5af2) drop-shadow(0 0 20px #bf5af266);
+}
+
+/* Scanline overlay */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Particle pulse keyframe */
+@keyframes pulse-along-edge {
+  0% { stroke-dashoffset: 100; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.edge-pulse {
+  animation: pulse-along-edge 0.8s ease-out forwards;
+  stroke-dasharray: 20 80;
+}
+
+/* Node hover */
+.seq-node:hover {
+  cursor: pointer;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #13131a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e2e;
+  border-radius: 2px;
+}

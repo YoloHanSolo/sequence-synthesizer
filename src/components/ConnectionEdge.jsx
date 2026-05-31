@@ -1,0 +1,85 @@
+import { getBezierPath, EdgeLabelRenderer, BaseEdge } from '@xyflow/react'
+
+export default function ConnectionEdge({
+  id, sourceX, sourceY, targetX, targetY,
+  sourcePosition, targetPosition,
+  data, markerEnd, markerStart,
+}) {
+  const [edgePath, labelX, labelY] = getBezierPath({
+    sourceX, sourceY, sourcePosition,
+    targetX, targetY, targetPosition,
+  })
+
+  const hasFwd  = data?.forward?.length  > 0
+  const hasBwd  = data?.backward?.length > 0
+  const pulse   = data?.pulse
+  const active  = data?.active
+
+  const opCount = (data?.forward?.length ?? 0) + (data?.backward?.length ?? 0)
+
+  const lineColor = active ? '#ffd60a' : '#2a2a4a'
+
+  return (
+    <>
+      <BaseEdge
+        id={id}
+        path={edgePath}
+        markerEnd={hasFwd ? markerEnd : undefined}
+        markerStart={hasBwd ? markerStart : undefined}
+        style={{
+          stroke: lineColor,
+          strokeWidth: active ? 2 : 1.5,
+          filter: active ? 'drop-shadow(0 0 4px #ffd60a66)' : 'none',
+          transition: 'stroke 0.2s, stroke-width 0.2s',
+        }}
+      />
+
+      {pulse && (
+        <path
+          d={edgePath}
+          fill="none"
+          stroke="#ffd60a"
+          strokeWidth={3}
+          strokeDasharray="20 80"
+          style={{
+            animation: 'pulse-along-edge 0.8s ease-out forwards',
+            strokeDashoffset: 100,
+          }}
+        />
+      )}
+
+      {/* Info icon — only visual affordance on the edge */}
+      <EdgeLabelRenderer>
+        <div
+          style={{
+            position: 'absolute',
+            transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
+            pointerEvents: 'all',
+            cursor: 'pointer',
+          }}
+          className="nodrag nopan"
+          title={`${opCount} operator${opCount !== 1 ? 's' : ''}`}
+        >
+          <div style={{
+            width: 16,
+            height: 16,
+            borderRadius: '50%',
+            background: active ? '#ffd60a' : '#13131a',
+            border: `1px solid ${active ? '#ffd60a' : '#2a2a5a'}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 9,
+            fontFamily: 'JetBrains Mono, monospace',
+            color: active ? '#0d0d0f' : '#3a3a6a',
+            fontWeight: 'bold',
+            transition: 'all 0.2s',
+            boxShadow: active ? '0 0 6px #ffd60a88' : 'none',
+          }}>
+            {opCount > 9 ? '…' : opCount}
+          </div>
+        </div>
+      </EdgeLabelRenderer>
+    </>
+  )
+}
