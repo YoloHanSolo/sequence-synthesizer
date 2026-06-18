@@ -78,5 +78,34 @@
   { "id": "e-nalt3-nalt2", "source": "nalt3", "target": "nalt2", "label": "⊕ Pos", "operator": "Pos" },
   { "id": "e-zero-nalt1",  "source": "zero",  "target": "nalt1", "label": "H1",    "operator": "H1"  },
   { "id": "e-nalt1-zero",  "source": "nalt1", "target": "zero",  "label": "H1",    "operator": "H1"  },
-  { "id": "e-x0-nalt2",    "source": "x0",    "target": "nalt2", "label": "H1",    "operator": "H1"  }
+  { "id": "e-x0-nalt2",    "source": "x0",    "target": "nalt2", "label": "H1",    "operator": "H1"  },
+
+  { "id": "e-pos-ne1x-ne2x", "source": "ne1x", "target": "ne2x", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-dl1-ne2x-ne1x", "source": "ne2x", "target": "ne1x", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-pos-ne2x-ne3x", "source": "ne2x", "target": "ne3x", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-dl1-ne3x-ne2x", "source": "ne3x", "target": "ne2x", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-pos-ne3x-ne4x", "source": "ne3x", "target": "ne4x", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-dl1-ne4x-ne3x", "source": "ne4x", "target": "ne3x", "label": "∇ DL1", "operator": "DL1" },
+
+  { "id": "e-neg-x0-ne2x",   "source": "x0",   "target": "ne2x", "label": "⊖ Neg", "operator": "Neg" },
+  { "id": "e-neg-e2x-ne3x",  "source": "e2x",  "target": "ne3x", "label": "⊖ Neg", "operator": "Neg" },
+  { "id": "e-neg-e3x-ne4x",  "source": "e3x",  "target": "ne4x", "label": "⊖ Neg", "operator": "Neg" },
+  { "id": "e-neg-ne1x-e2x",  "source": "ne1x", "target": "e2x",  "label": "⊖ Neg", "operator": "Neg" },
+  { "id": "e-neg-ne2x-e3x",  "source": "ne2x", "target": "e3x",  "label": "⊖ Neg", "operator": "Neg" },
+  { "id": "e-neg-ne3x-e4x",  "source": "ne3x", "target": "e4x",  "label": "⊖ Neg", "operator": "Neg" },
+
+  { "id": "e-dl0-e2x-ne1x",  "source": "e2x",  "target": "ne1x", "label": "∇ DL0", "operator": "DL0" },
+  { "id": "e-dl0-e3x-ne2x",  "source": "e3x",  "target": "ne2x", "label": "∇ DL0", "operator": "DL0" },
+  { "id": "e-dl0-e4x-ne3x",  "source": "e4x",  "target": "ne3x", "label": "∇ DL0", "operator": "DL0" },
+  { "id": "e-dl0-ne2x-x0",   "source": "ne2x", "target": "x0",   "label": "∇ DL0", "operator": "DL0" },
+  { "id": "e-dl0-ne3x-e2x",  "source": "ne3x", "target": "e2x",  "label": "∇ DL0", "operator": "DL0" },
+  { "id": "e-dl0-ne4x-e3x",  "source": "ne4x", "target": "e3x",  "label": "∇ DL0", "operator": "DL0" },
+  { "id": "e-dl0-ne1x-zero", "source": "ne1x", "target": "zero", "label": "∇ DL0", "operator": "DL0" },
+
+  { "id": "e-h0-ne1x-nalt2", "source": "ne1x", "target": "nalt2", "label": "H0", "operator": "H0" },
+  { "id": "e-h0-ne2x-nalt3", "source": "ne2x", "target": "nalt3", "label": "H0", "operator": "H0" },
+  { "id": "e-h0-ne3x-nalt4", "source": "ne3x", "target": "nalt4", "label": "H0", "operator": "H0" },
+  { "id": "e-h1-ne1x-alt2",  "source": "ne1x", "target": "alt2",  "label": "H1", "operator": "H1" },
+  { "id": "e-h1-ne2x-alt3",  "source": "ne2x", "target": "alt3",  "label": "H1", "operator": "H1" },
+  { "id": "e-h1-ne3x-alt4",  "source": "ne3x", "target": "alt4",  "label": "H1", "operator": "H1" }
 ]

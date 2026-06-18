@@ -112,8 +112,10 @@ const pulseTimer = useRef(null)
       const bwdPaths = edge.data.backward ?? []
       const isSelf = edge.data.selfLoop
 
+      const allActive = activeTransforms.size === ALL_TRANSFORM_IDS.length
       const pathVisible = paths => paths.some(p =>
-        p.operator == null || !FILTERABLE_IDS.has(p.operator) || activeTransforms.has(p.operator)
+        activeTransforms.has(p.operator) ||
+        (allActive && (p.operator == null || !FILTERABLE_IDS.has(p.operator)))
       )
 
       if (pathVisible(fwdPaths)) {
@@ -198,15 +200,17 @@ const pulseTimer = useRef(null)
           </div>
         </div>
 
-        {/* Left column: transform row + type strip */}
+        {/* Left panel: transform row + type strip, stacked */}
         <div
-          className="absolute left-0 z-10 flex flex-col"
-          style={{ top: 41, pointerEvents: 'none' }}
+          className="absolute z-10 flex flex-col"
+          style={{ top: 41, left: 6, pointerEvents: 'none' }}
         >
           {/* Transform filter row */}
           <div
-            className="flex flex-row gap-1 px-2 py-1.5"
+            className="flex flex-row gap-1.5 py-1.5 pr-2"
             style={{
+              paddingLeft: 0,
+              marginLeft: 34,
               background: 'linear-gradient(90deg, #0a0a10ee 0%, #0a0a1088 80%, transparent 100%)',
               pointerEvents: 'all',
             }}
@@ -219,9 +223,9 @@ const pulseTimer = useRef(null)
                   onClick={() => toggleTransform(t.id)}
                   title={t.name}
                   style={{
-                    padding: '2px 8px',
+                    padding: '4px 12px',
                     borderRadius: 4,
-                    fontSize: 10,
+                    fontSize: 11,
                     fontFamily: 'JetBrains Mono, monospace',
                     fontWeight: 'bold',
                     cursor: 'pointer',
@@ -240,8 +244,8 @@ const pulseTimer = useRef(null)
 
           {/* Type filter strip */}
           <div
-            className="flex flex-col gap-1 px-2 py-1.5"
-            style={{ pointerEvents: 'all' }}
+            className="flex flex-col gap-1.5 py-1.5 pr-2"
+            style={{ paddingLeft: 0, pointerEvents: 'all' }}
           >
             {TYPE_FILTERS.map(t => {
               const active = activeTypes.has(t.id)
@@ -251,10 +255,10 @@ const pulseTimer = useRef(null)
                   onClick={() => toggleType(t.id)}
                   title={t.name}
                   style={{
-                    width: 28,
-                    height: 28,
+                    width: 34,
+                    height: 34,
                     borderRadius: 4,
-                    fontSize: 11,
+                    fontSize: 13,
                     fontFamily: 'JetBrains Mono, monospace',
                     fontWeight: 'bold',
                     cursor: 'pointer',
