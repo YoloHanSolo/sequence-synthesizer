@@ -1183,13 +1183,6 @@
     "operator": "AbsDiff"
   },
   {
-    "id": "e-fib2-fib-absdiff",
-    "source": "fib2",
-    "target": "fib",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
     "id": "e-subfact-n110-absdiff",
     "source": "subfact",
     "target": "n110",
@@ -1340,13 +1333,6 @@
     "operator": "P"
   },
   {
-    "id": "e-fib-s0110-absdiff",
-    "source": "fib",
-    "target": "s0110",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
     "id": "e-s1010-n110-absdiff",
     "source": "s1010",
     "target": "n110",
@@ -1357,6 +1343,27 @@
     "id": "e-n110-s1010-absdiff",
     "source": "n110",
     "target": "s1010",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-per011-s0110-absdiff",
+    "source": "per011",
+    "target": "s0110",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-s0110-per011-absdiff",
+    "source": "s0110",
+    "target": "per011",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-fib-per011-absdiff",
+    "source": "fib",
+    "target": "per011",
     "label": "AbsDiff",
     "operator": "AbsDiff"
   }

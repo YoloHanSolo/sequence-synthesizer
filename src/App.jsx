@@ -127,11 +127,7 @@ const pulseTimer = useRef(null)
       const bwdPaths = edge.data.backward ?? []
       const isSelf = edge.data.selfLoop
 
-      const allActive = activeTransforms.size === ALL_TRANSFORM_IDS.length
-      const pathVisible = paths => paths.some(p =>
-        activeTransforms.has(p.operator) ||
-        (allActive && (p.operator == null || !FILTERABLE_IDS.has(p.operator)))
-      )
+      const pathVisible = paths => paths.some(p => activeTransforms.has(p.operator))
 
       const activeMinSteps = paths => {
         const active = paths.filter(p => p.operator && activeTransforms.has(p.operator))

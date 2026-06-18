@@ -590,5 +590,37 @@
       "x": 650,
       "y": 180
     }
+  },
+  {
+    "id": "per110",
+    "label": "[110]*",
+    "formula": "periodic 110",
+    "values": [
+      1,
+      1,
+      0,
+      1
+    ],
+    "type": "seed",
+    "position": {
+      "x": 420,
+      "y": 120
+    }
+  },
+  {
+    "id": "per011",
+    "label": "[011]*",
+    "formula": "periodic 011",
+    "values": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "type": "seed",
+    "position": {
+      "x": 420,
+      "y": 0
+    }
   }
 ]
