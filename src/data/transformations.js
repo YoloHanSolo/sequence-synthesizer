@@ -1,6 +1,18 @@
-import { matMul } from '../math/matrices'
+import { matMul } from '../math/matrices.js'
 
-const m = matrix => v => matMul(matrix, v)
+function C(n, k) {
+  if (k < 0 || k > n) return 0
+  if (k === 0 || k === n) return 1
+  let r = 1
+  for (let i = 0; i < k; i++) r = r * (n - i) / (i + 1)
+  return Math.round(r)
+}
+
+function binomialMatrix(signFn, size = 10) {
+  return Array.from({ length: size }, (_, n) =>
+    Array.from({ length: size }, (_, k) => k <= n ? signFn(n, k) * C(n, k) : 0)
+  )
+}
 
 export const TRANSFORMATIONS = [
   {
@@ -9,8 +21,7 @@ export const TRANSFORMATIONS = [
     color: '#fbbf24',
     filterable: true,
     description: 'c^x → (c-1)^x',
-    matrix: [[ 1, 0, 0, 0], [-1, 1, 0, 0], [ 1,-2, 1, 0], [-1, 3,-3, 1]],
-    fn: m([[ 1, 0, 0, 0], [-1, 1, 0, 0], [ 1,-2, 1, 0], [-1, 3,-3, 1]]),
+    matrix: binomialMatrix((n, k) => (-1) ** (n - k)),
   },
   {
     id: 'DL0',
@@ -18,8 +29,7 @@ export const TRANSFORMATIONS = [
     color: '#f87171',
     filterable: true,
     description: 'c^x → -(c-1)^x',
-    matrix: [[-1, 0, 0, 0], [ 1,-1, 0, 0], [-1, 2,-1, 0], [ 1,-3, 3,-1]],
-    fn: m([[-1, 0, 0, 0], [ 1,-1, 0, 0], [-1, 2,-1, 0], [ 1,-3, 3,-1]]),
+    matrix: binomialMatrix((n, k) => (-1) ** (n - k + 1)),
   },
   {
     id: 'H0',
@@ -27,8 +37,7 @@ export const TRANSFORMATIONS = [
     color: '#60a5fa',
     filterable: true,
     description: 'c^x → (-1-c)^x',
-    matrix: [[ 1, 0, 0, 0], [-1,-1, 0, 0], [ 1, 2, 1, 0], [-1,-3,-3,-1]],
-    fn: m([[ 1, 0, 0, 0], [-1,-1, 0, 0], [ 1, 2, 1, 0], [-1,-3,-3,-1]]),
+    matrix: binomialMatrix((n, _k) => (-1) ** n),
   },
   {
     id: 'H1',
@@ -36,8 +45,7 @@ export const TRANSFORMATIONS = [
     color: '#c084fc',
     filterable: true,
     description: 'c^x → -(-1-c)^x',
-    matrix: [[-1, 0, 0, 0], [ 1, 1, 0, 0], [-1,-2,-1, 0], [ 1, 3, 3, 1]],
-    fn: m([[-1, 0, 0, 0], [ 1, 1, 0, 0], [-1,-2,-1, 0], [ 1, 3, 3, 1]]),
+    matrix: binomialMatrix((n, _k) => (-1) ** (n + 1)),
   },
   {
     id: 'V0',
@@ -45,8 +53,7 @@ export const TRANSFORMATIONS = [
     color: '#34d399',
     filterable: true,
     description: 'c^x → -(1+c)^x',
-    matrix: [[-1, 0, 0, 0], [-1, 1, 0, 0], [-1, 2,-1, 0], [-1, 3,-3, 1]],
-    fn: m([[-1, 0, 0, 0], [-1, 1, 0, 0], [-1, 2,-1, 0], [-1, 3,-3, 1]]),
+    matrix: binomialMatrix((_n, k) => (-1) ** (k + 1)),
   },
   {
     id: 'V1',
@@ -54,8 +61,7 @@ export const TRANSFORMATIONS = [
     color: '#22d3ee',
     filterable: true,
     description: 'c^x → (1-c)^x',
-    matrix: [[ 1, 0, 0, 0], [ 1,-1, 0, 0], [ 1,-2, 1, 0], [ 1,-3, 3,-1]],
-    fn: m([[ 1, 0, 0, 0], [ 1,-1, 0, 0], [ 1,-2, 1, 0], [ 1,-3, 3,-1]]),
+    matrix: binomialMatrix((_n, k) => (-1) ** k),
   },
   {
     id: 'Pos',
@@ -63,8 +69,7 @@ export const TRANSFORMATIONS = [
     color: '#f472b6',
     filterable: true,
     description: 'c^x → (c+1)^x',
-    matrix: [[ 1, 0, 0, 0], [ 1, 1, 0, 0], [ 1, 2, 1, 0], [ 1, 3, 3, 1]],
-    fn: m([[ 1, 0, 0, 0], [ 1, 1, 0, 0], [ 1, 2, 1, 0], [ 1, 3, 3, 1]]),
+    matrix: binomialMatrix(() => 1),
   },
   {
     id: 'Neg',
@@ -72,8 +77,7 @@ export const TRANSFORMATIONS = [
     color: '#a3e635',
     filterable: true,
     description: 'c^x → -(c+1)^x',
-    matrix: [[-1, 0, 0, 0], [-1,-1, 0, 0], [-1,-2,-1, 0], [-1,-3,-3,-1]],
-    fn: m([[-1, 0, 0, 0], [-1,-1, 0, 0], [-1,-2,-1, 0], [-1,-3,-3,-1]]),
+    matrix: binomialMatrix(() => -1),
   },
   {
     id: 'AbsDiff',
@@ -98,8 +102,11 @@ export const TRANSFORMATIONS = [
     color: '#2dd4bf',
     filterable: true,
     description: 'seed_k → seed_{k+1}',
-    matrix: [[0, 0, 0, 0], [0, 1, 0, 0], [0, 2, 2, 0], [0, 0, 3, 3]],
-    fn: m([[0, 0, 0, 0], [0, 1, 0, 0], [0, 2, 2, 0], [0, 0, 3, 3]]),
+    matrix: Array.from({ length: 10 }, (_, n) =>
+      Array.from({ length: 10 }, (_, k) =>
+        k >= 1 && (k === n || k === n - 1) ? n : 0
+      )
+    ),
   },
   {
     id: 'P',
@@ -107,8 +114,11 @@ export const TRANSFORMATIONS = [
     color: '#38bdf8',
     filterable: true,
     description: 'x^k → x^{k+1}  (×x)',
-    matrix: [[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 2, 0], [0, 0, 0, 3]],
-    fn: m([[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 2, 0], [0, 0, 0, 3]]),
+    matrix: Array.from({ length: 10 }, (_, n) =>
+      Array.from({ length: 10 }, (_, k) =>
+        k === n && n >= 1 ? n : 0
+      )
+    ),
   },
   {
     id: 'Sierp',
@@ -116,10 +126,11 @@ export const TRANSFORMATIONS = [
     color: '#e879f9',
     filterable: true,
     description: 'Pascal mod 2: S[n]=Σv[k] where C(n,k) odd',
-    matrix: [[1, 0, 0, 0], [1, 1, 0, 0], [1, 0, 1, 0], [1, 1, 1, 1]],
-    fn: m([[1, 0, 0, 0], [1, 1, 0, 0], [1, 0, 1, 0], [1, 1, 1, 1]]),
+    matrix: Array.from({ length: 10 }, (_, n) =>
+      Array.from({ length: 10 }, (_, k) => k <= n ? C(n, k) % 2 : 0)
+    ),
   },
-]
+].map(t => t.matrix ? { ...t, fn: v => matMul(t.matrix, v) } : t)
 
 export const TRANSFORM_MAP = Object.fromEntries(TRANSFORMATIONS.map(t => [t.id, t]))
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { TRANSFORM_MAP, applyOp } from '../data/transformations'
-import { SEEDGEN_FULL_5x5, P_FULL_5x5 } from '../math/matrices'
 import { M, mathFmt } from '../math/format.jsx'
 
 const COLOR_MAP = {
@@ -116,7 +115,7 @@ function OpRow({ op, srcVec, tgtVec, srcAccent, tgtAccent }) {
         />
       </div>
 
-      {op.operator && TRANSFORM_MAP[op.operator]?.matrix && steps === 1 && <MatrixMini M={TRANSFORM_MAP[op.operator].matrix} accent={srcAccent} opName={op.operator} />}
+      {op.operator && TRANSFORM_MAP[op.operator]?.matrix && steps === 1 && <MatrixMini M={TRANSFORM_MAP[op.operator].matrix} accent={srcAccent} />}
     </div>
   )
 }
@@ -141,25 +140,17 @@ function VecDisplay({ vec, accent }) {
   )
 }
 
-function MatrixMini({ M: mat, accent, opName }) {
+function MatrixMini({ M: mat, accent }) {
   const [open, setOpen] = React.useState(false)
-  const isSeedGen = opName === 'SeedGen'
-  const isP       = opName === 'P'
-  const displayMat = isSeedGen ? SEEDGEN_FULL_5x5 : isP ? P_FULL_5x5 : mat
 
   return (
     <div className="mt-1">
       <button onClick={() => setOpen(o => !o)} style={{ color: '#3a3a5a', fontSize: 9 }} className="flex items-center gap-1">
-        {open ? '▼' : '▶'} {isSeedGen ? 'full 5×5 matrix M' : isP ? 'full 5×5 matrix P' : 'matrix'}
+        {open ? '▼' : '▶'} matrix
       </button>
       {open && (
         <div className="mt-1">
-          {(isSeedGen || isP) && (
-            <div className="mb-1" style={{ color: '#3a3a5a', fontSize: 9 }}>
-              (4×4 truncation used for computation)
-            </div>
-          )}
-          {displayMat.map((row, ri) => (
+          {mat.map((row, ri) => (
             <div key={ri} className="flex gap-1">
               {row.map((cell, ci) => (
                 <span key={ci}

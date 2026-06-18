@@ -938,13 +938,6 @@
     "operator": "SeedGen"
   },
   {
-    "id": "e-sg-fib-x2",
-    "source": "fib",
-    "target": "x2",
-    "label": "M",
-    "operator": "SeedGen"
-  },
-  {
     "id": "e-p-n110-s010",
     "source": "n110",
     "target": "s010",
@@ -1184,6 +1177,14 @@
     "steps": 3
   },
   {
+    "id": "e-absdiff-s01436-per017",
+    "source": "s01436",
+    "target": "per01",
+    "label": "AbsDiff",
+    "operator": "AbsDiff",
+    "steps": 7
+  },
+  {
     "id": "e-alt4-x0-absdiff5",
     "source": "alt4",
     "target": "x0",
@@ -1255,49 +1256,6 @@
     "operator": "AbsDiff"
   },
   {
-    "id": "e-subfact-n110-absdiff",
-    "source": "subfact",
-    "target": "n110",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
-    "id": "e-s01436-s01660-absdiff4",
-    "source": "s01436",
-    "target": "s01660",
-    "label": "AbsDiff×4",
-    "operator": "AbsDiff",
-    "steps": 4
-  },
-  {
-    "id": "e-s1010-n110-absdiff",
-    "source": "s1010",
-    "target": "n110",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
-    "id": "e-n110-s1010-absdiff",
-    "source": "n110",
-    "target": "s1010",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
-    "id": "e-per011-s0110-absdiff",
-    "source": "per011",
-    "target": "s0110",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
-    "id": "e-s0110-per011-absdiff",
-    "source": "s0110",
-    "target": "per011",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
     "id": "e-s010-self-p",
     "source": "s010",
     "target": "s010",
@@ -1308,27 +1266,6 @@
     "id": "e-fib-self-v0",
     "source": "fib",
     "target": "fib",
-    "label": "V0",
-    "operator": "V0"
-  },
-  {
-    "id": "e-s0110-self-v0",
-    "source": "s0110",
-    "target": "s0110",
-    "label": "V0",
-    "operator": "V0"
-  },
-  {
-    "id": "e-s0110-self-absdiff",
-    "source": "s0110",
-    "target": "s0110",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
-    "id": "e-per011-self-v0",
-    "source": "per011",
-    "target": "per011",
     "label": "V0",
     "operator": "V0"
   },
