@@ -231,18 +231,17 @@ const pulseTimer = useRef(null)
           </button>
         </div>
 
-        {/* Left panel: transform row + type strip, stacked */}
+        {/* Transform filter column — top left */}
         <div
-          className="absolute z-10 flex flex-col"
+          className="absolute z-10"
           style={{ top: 41, left: 6, pointerEvents: 'none' }}
         >
-          {/* Transform filter row */}
           <div
-            className="flex flex-row gap-1.5 py-1.5 pr-2"
             style={{
-              paddingLeft: 0,
-              marginLeft: 34,
-              background: 'linear-gradient(90deg, #0a0a10ee 0%, #0a0a1088 80%, transparent 100%)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 6,
+              padding: '6px 0',
               pointerEvents: 'all',
             }}
           >
@@ -254,7 +253,7 @@ const pulseTimer = useRef(null)
                   onClick={() => toggleTransform(t.id)}
                   title={t.name}
                   style={{
-                    padding: '4px 12px',
+                    padding: '4px 10px',
                     borderRadius: 4,
                     fontSize: 11,
                     fontFamily: 'JetBrains Mono, monospace',
@@ -265,6 +264,8 @@ const pulseTimer = useRef(null)
                     color: active ? t.color : '#3a3a5a',
                     boxShadow: active ? `0 0 6px ${t.color}44` : 'none',
                     transition: 'all 0.15s',
+                    textAlign: 'center',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {t.id}
@@ -272,11 +273,22 @@ const pulseTimer = useRef(null)
               )
             })}
           </div>
+        </div>
 
-          {/* Type filter strip */}
+        {/* Type filter column — top right */}
+        <div
+          className="absolute z-10"
+          style={{ top: 41, right: 6, pointerEvents: 'none' }}
+        >
           <div
-            className="flex flex-col gap-1.5 py-1.5 pr-2"
-            style={{ paddingLeft: 0, pointerEvents: 'all' }}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 6,
+              padding: '6px 0',
+              pointerEvents: 'all',
+              alignItems: 'stretch',
+            }}
           >
             {TYPE_FILTERS.map(t => {
               const active = activeTypes.has(t.id)
@@ -286,10 +298,9 @@ const pulseTimer = useRef(null)
                   onClick={() => toggleType(t.id)}
                   title={t.name}
                   style={{
-                    width: 34,
-                    height: 34,
+                    padding: '4px 10px',
                     borderRadius: 4,
-                    fontSize: 13,
+                    fontSize: 11,
                     fontFamily: 'JetBrains Mono, monospace',
                     fontWeight: 'bold',
                     cursor: 'pointer',
@@ -298,12 +309,11 @@ const pulseTimer = useRef(null)
                     color: active ? t.color : '#3a3a5a',
                     boxShadow: active ? `0 0 6px ${t.color}44` : 'none',
                     transition: 'all 0.15s',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    textAlign: 'center',
+                    whiteSpace: 'nowrap',
                   }}
                 >
-                  {t.label}
+                  {t.name}
                 </button>
               )
             })}
