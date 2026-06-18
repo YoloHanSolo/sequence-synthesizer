@@ -77,13 +77,21 @@ function PathGroup({ label, ops, srcVec, tgtVec, srcAccent, tgtAccent }) {
   )
 }
 
+function applyOpN(opName, v, steps) {
+  let cur = v
+  for (let i = 0; i < steps; i++) {
+    const Mmat = MATRICES[opName]
+    const fn   = FUNCTIONS[opName]
+    if (Mmat) cur = Mmat.map(row => row.reduce((s, c, j) => s + c * cur[j], 0))
+    else if (fn) cur = fn(cur)
+    else return null
+  }
+  return cur
+}
+
 function OpRow({ op, srcVec, tgtVec, srcAccent, tgtAccent }) {
-  const Mmat   = op.operator ? MATRICES[op.operator] : null
-  const fn     = op.operator ? FUNCTIONS[op.operator] : null
-  const result = Mmat
-    ? Mmat.map(row => row.reduce((s, c, j) => s + c * srcVec[j], 0))
-    : fn ? fn(srcVec)
-    : null
+  const steps  = op.steps ?? 1
+  const result = op.operator ? applyOpN(op.operator, srcVec, steps) : null
   const valid  = result ? result.every((v, i) => v === tgtVec[i]) : null
 
   const cleanLabel = op.operator ?? op.label
@@ -91,7 +99,9 @@ function OpRow({ op, srcVec, tgtVec, srcAccent, tgtAccent }) {
   return (
     <div className="rounded p-2" style={{ background: '#0d0d14', border: '1px solid #1e1e2e' }}>
       <div className="flex items-center justify-between mb-2">
-        <span className="font-bold" style={{ color: '#bf5af2' }}>{cleanLabel}</span>
+        <span className="font-bold" style={{ color: '#bf5af2' }}>
+          {cleanLabel}{steps > 1 && <span style={{ color: '#6a6a8a', fontWeight: 'normal' }}> ×{steps}</span>}
+        </span>
         {valid !== null && (
           <span style={{ color: valid ? '#00ff88' : '#ff2d55', fontSize: 9 }}>
             {valid ? '✓ verified' : '✗ mismatch'}
@@ -111,7 +121,7 @@ function OpRow({ op, srcVec, tgtVec, srcAccent, tgtAccent }) {
         />
       </div>
 
-      {Mmat && <MatrixMini M={Mmat} accent={srcAccent} opName={op.operator} />}
+      {op.operator && MATRICES[op.operator] && steps === 1 && <MatrixMini M={MATRICES[op.operator]} accent={srcAccent} opName={op.operator} />}
     </div>
   )
 }

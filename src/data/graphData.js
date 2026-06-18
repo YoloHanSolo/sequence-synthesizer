@@ -28,4 +28,5 @@ export const INITIAL_EDGES = mappings.map(m => ({
   target:   m.target,
   label:    m.label,
   operator: m.operator ?? null,
+  steps:    m.steps ?? 1,
 }))

@@ -2,7 +2,6 @@ import { getBezierPath, BaseEdge } from '@xyflow/react'
 
 /** Build an SVG path for a self-loop above the node */
 function selfLoopPath(cx, cy, r = 36) {
-  // Circle arc sitting above the node centre
   const x1 = cx - r
   const x2 = cx + r
   const y  = cy - 10
@@ -18,13 +17,17 @@ export default function ConnectionEdge({
   sourcePosition, targetPosition,
   data, markerEnd,
 }) {
-  const isSelf = data?.selfLoop
+  const isSelf    = data?.selfLoop
+  const minSteps  = data?.minSteps ?? 1
 
-  let edgePath
+  let edgePath, labelX, labelY
   if (isSelf) {
-    edgePath = selfLoopPath(sourceX, sourceY).path
+    const sl = selfLoopPath(sourceX, sourceY)
+    edgePath = sl.path
+    labelX   = sl.labelX
+    labelY   = sl.labelY
   } else {
-    ;[edgePath] = getBezierPath({
+    ;[edgePath, labelX, labelY] = getBezierPath({
       sourceX, sourceY, sourcePosition,
       targetX, targetY, targetPosition,
     })
@@ -34,6 +37,8 @@ export default function ConnectionEdge({
   const transformColor = data?.transformColor ?? null
   const lineColor      = transformColor ?? '#2a2a4a'
   const glowColor      = transformColor ? transformColor + '66' : 'none'
+  const badgeColor     = transformColor ?? '#6a6a8a'
+  const r              = 9
 
   return (
     <>
@@ -61,6 +66,34 @@ export default function ConnectionEdge({
             strokeDashoffset: 100,
           }}
         />
+      )}
+
+      {minSteps > 1 && (
+        <>
+          <circle
+            cx={labelX}
+            cy={labelY}
+            r={r}
+            fill="#0d0d0f"
+            stroke={badgeColor}
+            strokeWidth={1}
+          />
+          <text
+            x={labelX}
+            y={labelY + 3.5}
+            textAnchor="middle"
+            fill={badgeColor}
+            style={{
+              fontSize: 9,
+              fontFamily: 'JetBrains Mono, monospace',
+              fontWeight: 'bold',
+              pointerEvents: 'none',
+              userSelect: 'none',
+            }}
+          >
+            {minSteps}
+          </text>
+        </>
       )}
 
     </>

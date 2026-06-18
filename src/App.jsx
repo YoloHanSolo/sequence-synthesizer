@@ -40,7 +40,7 @@ function buildMergedEdges(rawEdges) {
       map[key] = { nodeAId: a, nodeBId: b, forward: [], backward: [], selfLoop: isSelf }
     }
     const slot = isSelf || e.source === a ? 'forward' : 'backward'
-    map[key][slot].push({ label: e.label, operator: e.operator ?? null })
+    map[key][slot].push({ label: e.label, operator: e.operator ?? null, steps: e.steps ?? 1 })
   }
   return Object.entries(map).map(([key, conn]) => ({
     id: `conn-${key}`,
@@ -122,12 +122,18 @@ const pulseTimer = useRef(null)
         (allActive && (p.operator == null || !FILTERABLE_IDS.has(p.operator)))
       )
 
+      const activeMinSteps = paths => {
+        const active = paths.filter(p => p.operator && activeTransforms.has(p.operator))
+        return active.length ? Math.min(...active.map(p => p.steps ?? 1)) : 1
+      }
+
       if (pathVisible(fwdPaths)) {
         const activeOp = fwdPaths.map(p => p.operator).filter(Boolean).find(op => activeTransforms.has(op))
         const transformColor = activeOp ? TRANSFORM_COLOR[activeOp] : null
         const markerColor = transformColor ?? '#2a2a4a'
         const handles = isSelf ? {} : getHandles(edge.source, edge.target, nodePos)
         const edgeId = `${edge.id}-fwd`
+        const minSteps = activeMinSteps(fwdPaths)
         result.push({
           ...edge,
           id: edgeId,
@@ -135,7 +141,7 @@ const pulseTimer = useRef(null)
           target: edge.target,
           ...handles,
           markerEnd: { type: MarkerType.ArrowClosed, color: markerColor, width: 14, height: 14 },
-          data: { ...edge.data, forward: fwdPaths, backward: [], pulse: pulseEdgeId === edgeId, transformColor },
+          data: { ...edge.data, forward: fwdPaths, backward: [], pulse: pulseEdgeId === edgeId, transformColor, minSteps },
         })
       }
 
@@ -145,6 +151,7 @@ const pulseTimer = useRef(null)
         const markerColor = transformColor ?? '#2a2a4a'
         const handles = getHandles(edge.target, edge.source, nodePos)
         const edgeId = `${edge.id}-bwd`
+        const minSteps = activeMinSteps(bwdPaths)
         result.push({
           ...edge,
           id: edgeId,
@@ -152,7 +159,7 @@ const pulseTimer = useRef(null)
           target: edge.source,
           ...handles,
           markerEnd: { type: MarkerType.ArrowClosed, color: markerColor, width: 14, height: 14 },
-          data: { ...edge.data, forward: bwdPaths, backward: [], pulse: pulseEdgeId === edgeId, transformColor },
+          data: { ...edge.data, forward: bwdPaths, backward: [], pulse: pulseEdgeId === edgeId, transformColor, minSteps },
         })
       }
     }

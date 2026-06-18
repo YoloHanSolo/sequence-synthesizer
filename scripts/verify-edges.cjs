@@ -54,7 +54,14 @@ for (const e of mappings) {
     continue
   }
 
-  const result = applyOp(e.operator, src.values)
+  const steps = e.steps ?? 1
+  let current = src.values
+  let result = null
+  for (let s = 0; s < steps; s++) {
+    result = applyOp(e.operator, current)
+    if (result === null) break
+    current = result
+  }
   if (result === null) { bad.push({ id: e.id, reason: `unknown operator '${e.operator}'` }); continue }
   const match = result.every((v, i) => v === tgt.values[i])
   if (!match) {

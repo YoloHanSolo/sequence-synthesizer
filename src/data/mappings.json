@@ -1335,5 +1335,21 @@
     "target": "nzero",
     "label": "AbsDiff",
     "operator": "AbsDiff"
+  },
+  {
+    "id": "e-s01660-per01-absdiff3",
+    "source": "s01660",
+    "target": "per01",
+    "label": "AbsDiff",
+    "operator": "AbsDiff",
+    "steps": 3
+  },
+  {
+    "id": "e-s01436-per01-absdiff7",
+    "source": "s01436",
+    "target": "per01",
+    "label": "AbsDiff",
+    "operator": "AbsDiff",
+    "steps": 7
   }
 ]
