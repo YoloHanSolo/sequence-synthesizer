@@ -1345,5 +1345,19 @@
     "target": "s0110",
     "label": "AbsDiff",
     "operator": "AbsDiff"
+  },
+  {
+    "id": "e-s1010-n110-absdiff",
+    "source": "s1010",
+    "target": "n110",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-n110-s1010-absdiff",
+    "source": "n110",
+    "target": "s1010",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
   }
 ]
