@@ -1296,5 +1296,47 @@
     "target": "per011",
     "label": "AbsDiff",
     "operator": "AbsDiff"
+  },
+  {
+    "id": "e-s010-self-p",
+    "source": "s010",
+    "target": "s010",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-fib-self-v0",
+    "source": "fib",
+    "target": "fib",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-s0110-self-v0",
+    "source": "s0110",
+    "target": "s0110",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-s0110-self-absdiff",
+    "source": "s0110",
+    "target": "s0110",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-per011-self-v0",
+    "source": "per011",
+    "target": "per011",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-per011-self-absdiff",
+    "source": "per011",
+    "target": "per011",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
   }
 ]

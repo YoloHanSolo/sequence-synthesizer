@@ -1,14 +1,13 @@
 import { getBezierPath, BaseEdge } from '@xyflow/react'
 
 /** Build an SVG path for a self-loop above the node */
-function selfLoopPath(cx, cy, r = 36) {
-  const x1 = cx - r
-  const x2 = cx + r
-  const y  = cy - 10
+function selfLoopPath(sx, sy, tx, ty, r = 22) {
+  const cx = (sx + tx) / 2
+  const cy = Math.min(sy, ty)
   return {
-    path: `M ${x1} ${y} C ${x1} ${y - r * 2} ${x2} ${y - r * 2} ${x2} ${y}`,
+    path: `M ${sx} ${cy} C ${sx} ${cy - r * 2} ${tx} ${cy - r * 2} ${tx} ${cy}`,
     labelX: cx,
-    labelY: cy - 10 - r * 2 + 6,
+    labelY: cy - r * 2 + 6,
   }
 }
 
@@ -22,7 +21,7 @@ export default function ConnectionEdge({
 
   let edgePath, labelX, labelY
   if (isSelf) {
-    const sl = selfLoopPath(sourceX, sourceY)
+    const sl = selfLoopPath(sourceX, sourceY, targetX, targetY)
     edgePath = sl.path
     labelX   = sl.labelX
     labelY   = sl.labelY

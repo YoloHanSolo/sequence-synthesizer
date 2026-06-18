@@ -45,7 +45,7 @@ export default function Inspector({ node }) {
       <div>
         <div className="mb-2 font-bold" style={{ color: '#6a6a8a' }}>SEQUENCE VECTOR</div>
         <div className="grid grid-cols-4 gap-1">
-          {data.values.map((v, i) => (
+          {data.values.slice(0, 4).map((v, i) => (
             <div key={i} className="flex flex-col items-center rounded p-1"
               style={{ background: '#1a1a2a', border: `1px solid ${accent}33` }}>
               <span style={{ color: '#4a4a6a', fontSize: '9px' }}>x={i}</span>

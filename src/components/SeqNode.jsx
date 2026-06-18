@@ -65,7 +65,7 @@ export default function SeqNode({ data, selected }) {
         <M>{data.label}</M>
       </div>
       <div className="text-center" style={{ color: '#7a7a9a', fontSize: '10px' }}>
-        [{data.values.join(', ')}]
+        [{data.values.slice(0, 4).join(', ')}]
       </div>
     </div>
   )
