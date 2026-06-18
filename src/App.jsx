@@ -47,8 +47,7 @@ function buildMergedEdges(rawEdges) {
     source: conn.nodeAId,
     target: conn.nodeBId,
     type: 'connection',
-    markerEnd:   { type: MarkerType.ArrowClosed, color: '#2a2a4a', width: 14, height: 14 },
-    markerStart: { type: MarkerType.ArrowClosed, color: '#2a2a4a', width: 14, height: 14 },
+    markerEnd: { type: MarkerType.ArrowClosed, color: '#2a2a4a', width: 14, height: 14 },
     data: { ...conn, pulse: false, selfLoop: conn.selfLoop ?? false },
   }))
 }
@@ -61,6 +60,14 @@ function edgeSide(dx, dy) {
   return Math.abs(dx) >= Math.abs(dy)
     ? (dx >= 0 ? 'right' : 'left')
     : (dy >= 0 ? 'bottom' : 'top')
+}
+
+function getHandles(srcId, tgtId, nodePos) {
+  const posA = nodePos[srcId]
+  const posB = nodePos[tgtId]
+  if (!posA || !posB) return { sourceHandle: 'source-right', targetHandle: 'target-left' }
+  const side = edgeSide(posB.x - posA.x, posB.y - posA.y)
+  return { sourceHandle: `source-${side}`, targetHandle: `target-${OPPOSITE[side]}` }
 }
 
 const ALL_TYPE_IDS = ['seed', 'poly', 'exponential', 'recurrence']
@@ -93,45 +100,54 @@ const pulseTimer = useRef(null)
   )
 
   const displayEdges = useMemo(() => {
+    if (activeTransforms.size === 0) return []
+
     const nodePos = Object.fromEntries(allNodes.map(n => [n.id, n.position]))
+    const result = []
 
-    return BASE_MERGED_EDGES
-      .filter(edge => {
-        if (activeTransforms.size === 0) return false
-        if (!visibleNodeIds.has(edge.source) || !visibleNodeIds.has(edge.target)) return false
-        const allPaths = [...(edge.data.forward ?? []), ...(edge.data.backward ?? [])]
-        return allPaths.some(p =>
-          p.operator == null ||
-          !FILTERABLE_IDS.has(p.operator) ||
-          activeTransforms.has(p.operator)
-        )
-      })
-      .map(edge => {
-        const allOps = [...(edge.data.forward ?? []), ...(edge.data.backward ?? [])]
-          .map(p => p.operator)
-          .filter(Boolean)
-        const activeOp = allOps.find(op => activeTransforms.has(op))
+    for (const edge of BASE_MERGED_EDGES) {
+      if (!visibleNodeIds.has(edge.source) || !visibleNodeIds.has(edge.target)) continue
+
+      const fwdPaths = edge.data.forward ?? []
+      const bwdPaths = edge.data.backward ?? []
+      const isSelf = edge.data.selfLoop
+
+      const pathVisible = paths => paths.some(p =>
+        p.operator == null || !FILTERABLE_IDS.has(p.operator) || activeTransforms.has(p.operator)
+      )
+
+      if (pathVisible(fwdPaths)) {
+        const activeOp = fwdPaths.map(p => p.operator).filter(Boolean).find(op => activeTransforms.has(op))
         const transformColor = activeOp ? TRANSFORM_COLOR[activeOp] : null
-
-        let sourceHandle = 'source-right'
-        let targetHandle = 'target-left'
-        if (!edge.data.selfLoop) {
-          const posA = nodePos[edge.source]
-          const posB = nodePos[edge.target]
-          if (posA && posB) {
-            const side = edgeSide(posB.x - posA.x, posB.y - posA.y)
-            sourceHandle = `source-${side}`
-            targetHandle = `target-${OPPOSITE[side]}`
-          }
-        }
-
-        return {
+        const handles = isSelf ? {} : getHandles(edge.source, edge.target, nodePos)
+        const edgeId = `${edge.id}-fwd`
+        result.push({
           ...edge,
-          sourceHandle,
-          targetHandle,
-          data: { ...edge.data, pulse: pulseEdgeId === edge.id, transformColor },
-        }
-      })
+          id: edgeId,
+          source: edge.source,
+          target: edge.target,
+          ...handles,
+          data: { ...edge.data, forward: fwdPaths, backward: [], pulse: pulseEdgeId === edgeId, transformColor },
+        })
+      }
+
+      if (!isSelf && pathVisible(bwdPaths)) {
+        const activeOp = bwdPaths.map(p => p.operator).filter(Boolean).find(op => activeTransforms.has(op))
+        const transformColor = activeOp ? TRANSFORM_COLOR[activeOp] : null
+        const handles = getHandles(edge.target, edge.source, nodePos)
+        const edgeId = `${edge.id}-bwd`
+        result.push({
+          ...edge,
+          id: edgeId,
+          source: edge.target,
+          target: edge.source,
+          ...handles,
+          data: { ...edge.data, forward: bwdPaths, backward: [], pulse: pulseEdgeId === edgeId, transformColor },
+        })
+      }
+    }
+
+    return result
   }, [visibleNodeIds, activeTransforms, pulseEdgeId, allNodes])
 
   const toggleType = useCallback((id) => {

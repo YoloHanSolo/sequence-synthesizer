@@ -16,7 +16,7 @@ function selfLoopPath(cx, cy, r = 36) {
 export default function ConnectionEdge({
   id, sourceX, sourceY, targetX, targetY,
   sourcePosition, targetPosition,
-  data, markerEnd, markerStart,
+  data, markerEnd,
 }) {
   const isSelf = data?.selfLoop
 
@@ -30,8 +30,6 @@ export default function ConnectionEdge({
     })
   }
 
-  const hasFwd         = data?.forward?.length  > 0
-  const hasBwd         = data?.backward?.length > 0
   const pulse          = data?.pulse
   const transformColor = data?.transformColor ?? null
   const lineColor      = transformColor ?? '#2a2a4a'
@@ -42,8 +40,7 @@ export default function ConnectionEdge({
       <BaseEdge
         id={id}
         path={edgePath}
-        markerEnd={isSelf || hasFwd ? markerEnd : undefined}
-        markerStart={!isSelf && hasBwd ? markerStart : undefined}
+        markerEnd={markerEnd}
         style={{
           stroke: lineColor,
           strokeWidth: transformColor ? 2 : 1.5,
