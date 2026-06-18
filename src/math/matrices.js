@@ -61,17 +61,20 @@ export function matMul(M, v) {
 
 /** Non-linear transform functions (cannot be expressed as 4×4 matrices) */
 export const FUNCTIONS = {
-  // Consecutive absolute differences; 4th element is 0 (requires f(4) to compute)
-  AbsDiff: v => [
-    Math.abs(v[1] - v[0]),
-    Math.abs(v[2] - v[1]),
-    Math.abs(v[3] - v[2]),
-    0,
-  ],
+  // Triangle left column: repeatedly take |row[i+1]-row[i]|, recording leftmost each pass
+  AbsDiff: v => {
+    const a = [...v]
+    const result = [a[0]]
+    for (let len = v.length - 1; len > 0; len--) {
+      for (let i = 0; i < len; i++) a[i] = Math.abs(a[i + 1] - a[i])
+      result.push(a[0])
+    }
+    return result
+  },
 }
 
 export const FUNCTION_DESCRIPTIONS = {
-  AbsDiff: '|f(n+1)−f(n)|',
+  AbsDiff: 'triangle left col: |Δ^k f(0)|',
 }
 
 /** Apply a named operator (matrix or function) to a 4-vector */

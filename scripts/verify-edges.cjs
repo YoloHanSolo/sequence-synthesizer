@@ -16,7 +16,15 @@ const MATRICES = {
 }
 
 const FUNCTIONS = {
-  AbsDiff: v => [Math.abs(v[1]-v[0]), Math.abs(v[2]-v[1]), Math.abs(v[3]-v[2]), 0],
+  AbsDiff: v => {
+    const a = [...v]
+    const result = [a[0]]
+    for (let len = v.length - 1; len > 0; len--) {
+      for (let i = 0; i < len; i++) a[i] = Math.abs(a[i + 1] - a[i])
+      result.push(a[0])
+    }
+    return result
+  },
 }
 
 function matMul(M, v) {
