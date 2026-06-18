@@ -1345,11 +1345,43 @@
     "steps": 3
   },
   {
-    "id": "e-s01436-per01-absdiff7",
-    "source": "s01436",
-    "target": "per01",
+    "id": "e-alt4-x0-absdiff5",
+    "source": "alt4",
+    "target": "x0",
     "label": "AbsDiff",
     "operator": "AbsDiff",
-    "steps": 7
+    "steps": 5
+  },
+  {
+    "id": "e-alt3-x0-absdiff4",
+    "source": "alt3",
+    "target": "x0",
+    "label": "AbsDiff",
+    "operator": "AbsDiff",
+    "steps": 4
+  },
+  {
+    "id": "e-alt2-x0-absdiff3",
+    "source": "alt2",
+    "target": "x0",
+    "label": "AbsDiff",
+    "operator": "AbsDiff",
+    "steps": 3
+  },
+  {
+    "id": "e-alt1-x0-absdiff2",
+    "source": "alt1",
+    "target": "x0",
+    "label": "AbsDiff",
+    "operator": "AbsDiff",
+    "steps": 2
+  },
+  {
+    "id": "e-s01436-s01660-absdiff4",
+    "source": "s01436",
+    "target": "s01660",
+    "label": "AbsDiff",
+    "operator": "AbsDiff",
+    "steps": 4
   }
 ]

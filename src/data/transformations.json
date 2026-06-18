@@ -105,8 +105,8 @@
   {
     "id": "SeedGen",
     "name": "Seed Generator",
-    "color": null,
-    "filterable": false,
+    "color": "#2dd4bf",
+    "filterable": true,
     "matrix": [
       [0, 0, 0, 0],
       [0, 1, 0, 0],
@@ -117,8 +117,8 @@
   {
     "id": "P",
     "name": "Polynomial Step",
-    "color": null,
-    "filterable": false,
+    "color": "#38bdf8",
+    "filterable": true,
     "matrix": [
       [0, 0, 0, 0],
       [0, 1, 0, 0],
