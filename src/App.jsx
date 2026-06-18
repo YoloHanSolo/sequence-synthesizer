@@ -87,7 +87,11 @@ export default function App() {
   const [pulseEdgeId, setPulseEdgeId] = useState(null)
 const pulseTimer = useRef(null)
 
-  const [allNodes, , onNodesChange] = useNodesState(INITIAL_NODES)
+  const [allNodes, setNodes, onNodesChange] = useNodesState(INITIAL_NODES)
+
+  const resetPositions = useCallback(() => {
+    setNodes(INITIAL_NODES)
+  }, [setNodes])
 
   const visibleNodes = useMemo(() =>
     allNodes.filter(n => n.data.type === 'alternating' || activeTypes.has(n.data.type)),
@@ -198,6 +202,26 @@ const pulseTimer = useRef(null)
             <span className="font-bold text-sm" style={{ color: '#00d4ff' }}>SEQUENCE SYNTHESIZER</span>
             <span className="ml-3 text-xs" style={{ color: '#3a3a5a' }}>Horizon of Seeds Map</span>
           </div>
+          <button
+            onClick={resetPositions}
+            title="Reset node positions"
+            style={{
+              padding: '3px 10px',
+              borderRadius: 4,
+              fontSize: 11,
+              fontFamily: 'JetBrains Mono, monospace',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              background: '#0d0d0f',
+              border: '1px solid #2a2a4a',
+              color: '#3a3a5a',
+              transition: 'all 0.15s',
+            }}
+            onMouseEnter={e => { e.target.style.borderColor = '#00d4ff'; e.target.style.color = '#00d4ff' }}
+            onMouseLeave={e => { e.target.style.borderColor = '#2a2a4a'; e.target.style.color = '#3a3a5a' }}
+          >
+            reset layout
+          </button>
         </div>
 
         {/* Left panel: transform row + type strip, stacked */}

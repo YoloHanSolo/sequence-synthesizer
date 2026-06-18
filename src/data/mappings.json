@@ -1,111 +1,1206 @@
 [
-  { "id": "e-alt3-alt4",   "source": "alt3",  "target": "alt4",  "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-alt4-alt3",   "source": "alt4",  "target": "alt3",  "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-nalt3-nalt4", "source": "nalt3", "target": "nalt4", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-nalt4-nalt3", "source": "nalt4", "target": "nalt3", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-e3x-e4x",    "source": "e3x",   "target": "e4x",   "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-e4x-e3x",    "source": "e4x",   "target": "e3x",   "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-x3-x4-P",    "source": "x3",    "target": "x4",    "label": "P",      "operator": "P"   },
-
-  { "id": "e-alt2-alt3", "source": "alt2", "target": "alt3", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-alt3-alt2", "source": "alt3", "target": "alt2", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-alt1-alt2", "source": "alt1", "target": "alt2", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-alt2-alt1", "source": "alt2", "target": "alt1", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-zero-alt1", "source": "zero", "target": "alt1", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-alt1-zero", "source": "alt1", "target": "zero", "label": "⊕ Pos", "operator": "Pos" },
-
-  { "id": "e-x0-alt2", "source": "x0", "target": "alt2", "label": "H0", "operator": "H0" },
-
-  { "id": "e-zero-x0", "source": "zero", "target": "x0",   "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-x0-zero", "source": "x0",   "target": "zero", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-s010-x1", "source": "s010", "target": "x1",   "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-x1-s010", "source": "x1",   "target": "s010", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-s0120-x2",  "source": "s0120",  "target": "x2",     "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-x2-s0120",  "source": "x2",     "target": "s0120",  "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-s01660-x3", "source": "s01660", "target": "x3",     "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-x3-s01660", "source": "x3",     "target": "s01660", "label": "∇ DL1", "operator": "DL1" },
-
-  { "id": "e-x0-x1-P", "source": "x0", "target": "x1", "label": "P", "operator": "P" },
-  { "id": "e-x1-x2-P", "source": "x1", "target": "x2", "label": "P", "operator": "P" },
-  { "id": "e-x2-x3-P", "source": "x2", "target": "x3", "label": "P", "operator": "P" },
-
-  { "id": "e-s0110-tri", "source": "s0110", "target": "tri",   "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-tri-s0110", "source": "tri",   "target": "s0110", "label": "∇ DL1", "operator": "DL1" },
-
-  { "id": "e-s01436-x4", "source": "s01436", "target": "x4",     "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-x4-s01436", "source": "x4",     "target": "s01436", "label": "∇ DL1", "operator": "DL1" },
-
-  { "id": "e-s010-s0120",    "source": "s010",   "target": "s0120",   "label": "M", "operator": "SeedGen" },
-  { "id": "e-s0120-s01660",  "source": "s0120",  "target": "s01660",  "label": "M", "operator": "SeedGen" },
-  { "id": "e-s01660-s01436", "source": "s01660", "target": "s01436",  "label": "M", "operator": "SeedGen" },
-
-  { "id": "e-s010-per01",  "source": "s010",  "target": "per01", "label": "Δ", "operator": null },
-  { "id": "e-per01-s010",  "source": "per01", "target": "s010",  "label": "Δ", "operator": null },
-  { "id": "e-s0120-per01",  "source": "s0120",  "target": "per01", "label": "Δ",   "operator": null },
-  { "id": "e-s01660-per01", "source": "s01660", "target": "per01", "label": "3·Δ", "operator": null },
-
-  { "id": "e-per01-per10", "source": "per01", "target": "per10", "label": "∞", "operator": null },
-  { "id": "e-per10-per01", "source": "per10", "target": "per01", "label": "∞", "operator": null },
-
-  { "id": "e-n110-per01", "source": "n110", "target": "per01", "label": "Δ", "operator": null },
-  { "id": "e-n110-cfib",  "source": "n110", "target": "cfib",  "label": "Δ", "operator": null },
-  { "id": "e-cfib-n110",  "source": "cfib", "target": "n110",  "label": "Δ", "operator": null },
-
-  { "id": "e-cfib-self", "source": "cfib", "target": "cfib", "label": "Δ", "operator": null },
-
-  { "id": "e-cfib-fib",  "source": "cfib", "target": "fib",  "label": "Δ", "operator": null },
-  { "id": "e-fib-cfib",  "source": "fib",  "target": "cfib", "label": "Δ", "operator": null },
-
-  { "id": "e-fib-fib2", "source": "fib",  "target": "fib2", "label": "Δ",  "operator": null },
-  { "id": "e-fib2-fib", "source": "fib2", "target": "fib",  "label": "⊕", "operator": null },
-
-  { "id": "e-subfact-fact", "source": "subfact", "target": "fact",    "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-fact-subfact", "source": "fact",    "target": "subfact", "label": "∇ DL1", "operator": "DL1" },
-
-  { "id": "e-fact-per10",    "source": "fact",    "target": "per10", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-subfact-per10", "source": "subfact", "target": "per10", "label": "Δ",     "operator": null  },
-
-  { "id": "e-x0-e2x",   "source": "x0",  "target": "e2x", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-e2x-x0",   "source": "e2x", "target": "x0",  "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-e2x-e3x",  "source": "e2x", "target": "e3x", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-e3x-e2x",  "source": "e3x", "target": "e2x", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-e2x-alt3",  "source": "e2x", "target": "alt3",  "label": "H0", "operator": "H0" },
-  { "id": "e-e2x-nalt3", "source": "e2x", "target": "nalt3", "label": "H1", "operator": "H1" },
-
-  { "id": "e-nalt1-nalt2", "source": "nalt1", "target": "nalt2", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-nalt2-nalt1", "source": "nalt2", "target": "nalt1", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-nalt2-nalt3", "source": "nalt2", "target": "nalt3", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-nalt3-nalt2", "source": "nalt3", "target": "nalt2", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-zero-nalt1",  "source": "zero",  "target": "nalt1", "label": "H1",    "operator": "H1"  },
-  { "id": "e-nalt1-zero",  "source": "nalt1", "target": "zero",  "label": "H1",    "operator": "H1"  },
-  { "id": "e-x0-nalt2",    "source": "x0",    "target": "nalt2", "label": "H1",    "operator": "H1"  },
-
-  { "id": "e-pos-ne1x-ne2x", "source": "ne1x", "target": "ne2x", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-dl1-ne2x-ne1x", "source": "ne2x", "target": "ne1x", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-pos-ne2x-ne3x", "source": "ne2x", "target": "ne3x", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-dl1-ne3x-ne2x", "source": "ne3x", "target": "ne2x", "label": "∇ DL1", "operator": "DL1" },
-  { "id": "e-pos-ne3x-ne4x", "source": "ne3x", "target": "ne4x", "label": "⊕ Pos", "operator": "Pos" },
-  { "id": "e-dl1-ne4x-ne3x", "source": "ne4x", "target": "ne3x", "label": "∇ DL1", "operator": "DL1" },
-
-  { "id": "e-neg-x0-ne2x",   "source": "x0",   "target": "ne2x", "label": "⊖ Neg", "operator": "Neg" },
-  { "id": "e-neg-e2x-ne3x",  "source": "e2x",  "target": "ne3x", "label": "⊖ Neg", "operator": "Neg" },
-  { "id": "e-neg-e3x-ne4x",  "source": "e3x",  "target": "ne4x", "label": "⊖ Neg", "operator": "Neg" },
-  { "id": "e-neg-ne1x-e2x",  "source": "ne1x", "target": "e2x",  "label": "⊖ Neg", "operator": "Neg" },
-  { "id": "e-neg-ne2x-e3x",  "source": "ne2x", "target": "e3x",  "label": "⊖ Neg", "operator": "Neg" },
-  { "id": "e-neg-ne3x-e4x",  "source": "ne3x", "target": "e4x",  "label": "⊖ Neg", "operator": "Neg" },
-
-  { "id": "e-dl0-e2x-ne1x",  "source": "e2x",  "target": "ne1x", "label": "∇ DL0", "operator": "DL0" },
-  { "id": "e-dl0-e3x-ne2x",  "source": "e3x",  "target": "ne2x", "label": "∇ DL0", "operator": "DL0" },
-  { "id": "e-dl0-e4x-ne3x",  "source": "e4x",  "target": "ne3x", "label": "∇ DL0", "operator": "DL0" },
-  { "id": "e-dl0-ne2x-x0",   "source": "ne2x", "target": "x0",   "label": "∇ DL0", "operator": "DL0" },
-  { "id": "e-dl0-ne3x-e2x",  "source": "ne3x", "target": "e2x",  "label": "∇ DL0", "operator": "DL0" },
-  { "id": "e-dl0-ne4x-e3x",  "source": "ne4x", "target": "e3x",  "label": "∇ DL0", "operator": "DL0" },
-  { "id": "e-dl0-ne1x-zero", "source": "ne1x", "target": "zero", "label": "∇ DL0", "operator": "DL0" },
-
-  { "id": "e-h0-ne1x-nalt2", "source": "ne1x", "target": "nalt2", "label": "H0", "operator": "H0" },
-  { "id": "e-h0-ne2x-nalt3", "source": "ne2x", "target": "nalt3", "label": "H0", "operator": "H0" },
-  { "id": "e-h0-ne3x-nalt4", "source": "ne3x", "target": "nalt4", "label": "H0", "operator": "H0" },
-  { "id": "e-h1-ne1x-alt2",  "source": "ne1x", "target": "alt2",  "label": "H1", "operator": "H1" },
-  { "id": "e-h1-ne2x-alt3",  "source": "ne2x", "target": "alt3",  "label": "H1", "operator": "H1" },
-  { "id": "e-h1-ne3x-alt4",  "source": "ne3x", "target": "alt4",  "label": "H1", "operator": "H1" }
+  {
+    "id": "e-alt3-alt4",
+    "source": "alt3",
+    "target": "alt4",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-alt4-alt3",
+    "source": "alt4",
+    "target": "alt3",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-nalt3-nalt4",
+    "source": "nalt3",
+    "target": "nalt4",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-nalt4-nalt3",
+    "source": "nalt4",
+    "target": "nalt3",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-e3x-e4x",
+    "source": "e3x",
+    "target": "e4x",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-e4x-e3x",
+    "source": "e4x",
+    "target": "e3x",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-x3-x4-P",
+    "source": "x3",
+    "target": "x4",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-alt2-alt3",
+    "source": "alt2",
+    "target": "alt3",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-alt3-alt2",
+    "source": "alt3",
+    "target": "alt2",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-alt1-alt2",
+    "source": "alt1",
+    "target": "alt2",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-alt2-alt1",
+    "source": "alt2",
+    "target": "alt1",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-zero-alt1",
+    "source": "zero",
+    "target": "alt1",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-alt1-zero",
+    "source": "alt1",
+    "target": "zero",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-x0-alt2",
+    "source": "x0",
+    "target": "alt2",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-zero-x0",
+    "source": "zero",
+    "target": "x0",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-x0-zero",
+    "source": "x0",
+    "target": "zero",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-s010-x1",
+    "source": "s010",
+    "target": "x1",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-x1-s010",
+    "source": "x1",
+    "target": "s010",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-s0120-x2",
+    "source": "s0120",
+    "target": "x2",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-x2-s0120",
+    "source": "x2",
+    "target": "s0120",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-s01660-x3",
+    "source": "s01660",
+    "target": "x3",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-x3-s01660",
+    "source": "x3",
+    "target": "s01660",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-x0-x1-P",
+    "source": "x0",
+    "target": "x1",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-x1-x2-P",
+    "source": "x1",
+    "target": "x2",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-x2-x3-P",
+    "source": "x2",
+    "target": "x3",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-s0110-tri",
+    "source": "s0110",
+    "target": "tri",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-tri-s0110",
+    "source": "tri",
+    "target": "s0110",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-s01436-x4",
+    "source": "s01436",
+    "target": "x4",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-x4-s01436",
+    "source": "x4",
+    "target": "s01436",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-s010-s0120",
+    "source": "s010",
+    "target": "s0120",
+    "label": "M",
+    "operator": "SeedGen"
+  },
+  {
+    "id": "e-s0120-s01660",
+    "source": "s0120",
+    "target": "s01660",
+    "label": "M",
+    "operator": "SeedGen"
+  },
+  {
+    "id": "e-s01660-s01436",
+    "source": "s01660",
+    "target": "s01436",
+    "label": "M",
+    "operator": "SeedGen"
+  },
+  {
+    "id": "e-s010-per01",
+    "source": "s010",
+    "target": "per01",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-per01-s010",
+    "source": "per01",
+    "target": "s010",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-s0120-per01",
+    "source": "s0120",
+    "target": "per01",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-s01660-per01",
+    "source": "s01660",
+    "target": "per01",
+    "label": "3·Δ",
+    "operator": null
+  },
+  {
+    "id": "e-per01-per10",
+    "source": "per01",
+    "target": "per10",
+    "label": "∞",
+    "operator": null
+  },
+  {
+    "id": "e-per10-per01",
+    "source": "per10",
+    "target": "per01",
+    "label": "∞",
+    "operator": null
+  },
+  {
+    "id": "e-n110-per01",
+    "source": "n110",
+    "target": "per01",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-n110-cfib",
+    "source": "n110",
+    "target": "cfib",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-cfib-n110",
+    "source": "cfib",
+    "target": "n110",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-cfib-self",
+    "source": "cfib",
+    "target": "cfib",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-cfib-fib",
+    "source": "cfib",
+    "target": "fib",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-fib-cfib",
+    "source": "fib",
+    "target": "cfib",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-fib-fib2",
+    "source": "fib",
+    "target": "fib2",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-fib2-fib",
+    "source": "fib2",
+    "target": "fib",
+    "label": "⊕",
+    "operator": null
+  },
+  {
+    "id": "e-subfact-fact",
+    "source": "subfact",
+    "target": "fact",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-fact-subfact",
+    "source": "fact",
+    "target": "subfact",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-fact-per10",
+    "source": "fact",
+    "target": "per10",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-subfact-per10",
+    "source": "subfact",
+    "target": "per10",
+    "label": "Δ",
+    "operator": null
+  },
+  {
+    "id": "e-x0-e2x",
+    "source": "x0",
+    "target": "e2x",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-e2x-x0",
+    "source": "e2x",
+    "target": "x0",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-e2x-e3x",
+    "source": "e2x",
+    "target": "e3x",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-e3x-e2x",
+    "source": "e3x",
+    "target": "e2x",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-e2x-alt3",
+    "source": "e2x",
+    "target": "alt3",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-e2x-nalt3",
+    "source": "e2x",
+    "target": "nalt3",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-nalt1-nalt2",
+    "source": "nalt1",
+    "target": "nalt2",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-nalt2-nalt1",
+    "source": "nalt2",
+    "target": "nalt1",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-nalt2-nalt3",
+    "source": "nalt2",
+    "target": "nalt3",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-nalt3-nalt2",
+    "source": "nalt3",
+    "target": "nalt2",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-zero-nalt1",
+    "source": "zero",
+    "target": "nalt1",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-nalt1-zero",
+    "source": "nalt1",
+    "target": "zero",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-x0-nalt2",
+    "source": "x0",
+    "target": "nalt2",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-pos-ne1x-ne2x",
+    "source": "ne1x",
+    "target": "ne2x",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-dl1-ne2x-ne1x",
+    "source": "ne2x",
+    "target": "ne1x",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-pos-ne2x-ne3x",
+    "source": "ne2x",
+    "target": "ne3x",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-dl1-ne3x-ne2x",
+    "source": "ne3x",
+    "target": "ne2x",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-pos-ne3x-ne4x",
+    "source": "ne3x",
+    "target": "ne4x",
+    "label": "⊕ Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-dl1-ne4x-ne3x",
+    "source": "ne4x",
+    "target": "ne3x",
+    "label": "∇ DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-neg-x0-ne2x",
+    "source": "x0",
+    "target": "ne2x",
+    "label": "⊖ Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-e2x-ne3x",
+    "source": "e2x",
+    "target": "ne3x",
+    "label": "⊖ Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-e3x-ne4x",
+    "source": "e3x",
+    "target": "ne4x",
+    "label": "⊖ Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-ne1x-e2x",
+    "source": "ne1x",
+    "target": "e2x",
+    "label": "⊖ Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-ne2x-e3x",
+    "source": "ne2x",
+    "target": "e3x",
+    "label": "⊖ Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-ne3x-e4x",
+    "source": "ne3x",
+    "target": "e4x",
+    "label": "⊖ Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-dl0-e2x-ne1x",
+    "source": "e2x",
+    "target": "ne1x",
+    "label": "∇ DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-e3x-ne2x",
+    "source": "e3x",
+    "target": "ne2x",
+    "label": "∇ DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-e4x-ne3x",
+    "source": "e4x",
+    "target": "ne3x",
+    "label": "∇ DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-ne2x-x0",
+    "source": "ne2x",
+    "target": "x0",
+    "label": "∇ DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-ne3x-e2x",
+    "source": "ne3x",
+    "target": "e2x",
+    "label": "∇ DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-ne4x-e3x",
+    "source": "ne4x",
+    "target": "e3x",
+    "label": "∇ DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-ne1x-zero",
+    "source": "ne1x",
+    "target": "zero",
+    "label": "∇ DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-h0-ne1x-nalt2",
+    "source": "ne1x",
+    "target": "nalt2",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h0-ne2x-nalt3",
+    "source": "ne2x",
+    "target": "nalt3",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h0-ne3x-nalt4",
+    "source": "ne3x",
+    "target": "nalt4",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-ne1x-alt2",
+    "source": "ne1x",
+    "target": "alt2",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-h1-ne2x-alt3",
+    "source": "ne2x",
+    "target": "alt3",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-h1-ne3x-alt4",
+    "source": "ne3x",
+    "target": "alt4",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-neg-alt4-nalt3",
+    "source": "alt4",
+    "target": "nalt3",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-nalt4-alt3",
+    "source": "nalt4",
+    "target": "alt3",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-nalt3-alt2",
+    "source": "nalt3",
+    "target": "alt2",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-nalt2-alt1",
+    "source": "nalt2",
+    "target": "alt1",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-nalt1-zero",
+    "source": "nalt1",
+    "target": "zero",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-alt3-nalt2",
+    "source": "alt3",
+    "target": "nalt2",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-alt2-nalt1",
+    "source": "alt2",
+    "target": "nalt1",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-neg-zero-ne1x",
+    "source": "zero",
+    "target": "ne1x",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-dl0-nalt3-alt4",
+    "source": "nalt3",
+    "target": "alt4",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-nalt2-alt3",
+    "source": "nalt2",
+    "target": "alt3",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-nalt1-alt2",
+    "source": "nalt1",
+    "target": "alt2",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-alt3-nalt4",
+    "source": "alt3",
+    "target": "nalt4",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-alt2-nalt3",
+    "source": "alt2",
+    "target": "nalt3",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-alt1-nalt2",
+    "source": "alt1",
+    "target": "nalt2",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-dl0-zero-nalt1",
+    "source": "zero",
+    "target": "nalt1",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-h0-alt4-e3x",
+    "source": "alt4",
+    "target": "e3x",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-alt4-ne3x",
+    "source": "alt4",
+    "target": "ne3x",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-h0-nalt4-ne3x",
+    "source": "nalt4",
+    "target": "ne3x",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-nalt4-e3x",
+    "source": "nalt4",
+    "target": "e3x",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-h0-nalt3-ne2x",
+    "source": "nalt3",
+    "target": "ne2x",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-nalt3-e2x",
+    "source": "nalt3",
+    "target": "e2x",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-h0-nalt2-ne1x",
+    "source": "nalt2",
+    "target": "ne1x",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-nalt2-x0",
+    "source": "nalt2",
+    "target": "x0",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-h0-alt3-e2x",
+    "source": "alt3",
+    "target": "e2x",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-alt3-ne2x",
+    "source": "alt3",
+    "target": "ne2x",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-h0-alt2-x0",
+    "source": "alt2",
+    "target": "x0",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-alt2-ne1x",
+    "source": "alt2",
+    "target": "ne1x",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-h0-alt1-zero",
+    "source": "alt1",
+    "target": "zero",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h0-zero-alt1",
+    "source": "zero",
+    "target": "alt1",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h0-e3x-alt4",
+    "source": "e3x",
+    "target": "alt4",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-e3x-nalt4",
+    "source": "e3x",
+    "target": "nalt4",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-v0-nalt3-e4x",
+    "source": "nalt3",
+    "target": "e4x",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-nalt3-ne4x",
+    "source": "nalt3",
+    "target": "ne4x",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-nalt2-e3x",
+    "source": "nalt2",
+    "target": "e3x",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-nalt2-ne3x",
+    "source": "nalt2",
+    "target": "ne3x",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-nalt1-e2x",
+    "source": "nalt1",
+    "target": "e2x",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-nalt1-ne2x",
+    "source": "nalt1",
+    "target": "ne2x",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-alt3-ne4x",
+    "source": "alt3",
+    "target": "ne4x",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-alt3-e4x",
+    "source": "alt3",
+    "target": "e4x",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-alt2-ne3x",
+    "source": "alt2",
+    "target": "ne3x",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-alt2-e3x",
+    "source": "alt2",
+    "target": "e3x",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-alt1-ne2x",
+    "source": "alt1",
+    "target": "ne2x",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-alt1-e2x",
+    "source": "alt1",
+    "target": "e2x",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-e2x-nalt1",
+    "source": "e2x",
+    "target": "nalt1",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-e2x-alt1",
+    "source": "e2x",
+    "target": "alt1",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-e3x-nalt2",
+    "source": "e3x",
+    "target": "nalt2",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-e3x-alt2",
+    "source": "e3x",
+    "target": "alt2",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-e4x-nalt3",
+    "source": "e4x",
+    "target": "nalt3",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-e4x-alt3",
+    "source": "e4x",
+    "target": "alt3",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-ne2x-alt1",
+    "source": "ne2x",
+    "target": "alt1",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-ne2x-nalt1",
+    "source": "ne2x",
+    "target": "nalt1",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-ne3x-alt2",
+    "source": "ne3x",
+    "target": "alt2",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-ne3x-nalt2",
+    "source": "ne3x",
+    "target": "nalt2",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-ne4x-alt3",
+    "source": "ne4x",
+    "target": "alt3",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-ne4x-nalt3",
+    "source": "ne4x",
+    "target": "nalt3",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-s010-x1",
+    "source": "s010",
+    "target": "x1",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v0-x1-s010",
+    "source": "x1",
+    "target": "s010",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-x0-zero",
+    "source": "x0",
+    "target": "zero",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-v0-ne1x-zero",
+    "source": "ne1x",
+    "target": "zero",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v0-zero-ne1x",
+    "source": "zero",
+    "target": "ne1x",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-zero-x0",
+    "source": "zero",
+    "target": "x0",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-sg-nalt1-s010",
+    "source": "nalt1",
+    "target": "s010",
+    "label": "M",
+    "operator": "SeedGen"
+  },
+  {
+    "id": "e-sg-per01-x1",
+    "source": "per01",
+    "target": "x1",
+    "label": "M",
+    "operator": "SeedGen"
+  },
+  {
+    "id": "e-sg-n110-s0120",
+    "source": "n110",
+    "target": "s0120",
+    "label": "M",
+    "operator": "SeedGen"
+  },
+  {
+    "id": "e-sg-fib-x2",
+    "source": "fib",
+    "target": "x2",
+    "label": "M",
+    "operator": "SeedGen"
+  },
+  {
+    "id": "e-sg-tri-x3",
+    "source": "tri",
+    "target": "x3",
+    "label": "M",
+    "operator": "SeedGen"
+  },
+  {
+    "id": "e-p-n110-s010",
+    "source": "n110",
+    "target": "s010",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-p-s0110-s0120",
+    "source": "s0110",
+    "target": "s0120",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-pos-nzero-ne1x",
+    "source": "nzero",
+    "target": "ne1x",
+    "label": "Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-neg-nzero-x0",
+    "source": "nzero",
+    "target": "x0",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-dl1-nzero-nalt1",
+    "source": "nzero",
+    "target": "nalt1",
+    "label": "DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-dl0-nzero-alt1",
+    "source": "nzero",
+    "target": "alt1",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-h0-nzero-nalt1",
+    "source": "nzero",
+    "target": "nalt1",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-h1-nzero-alt1",
+    "source": "nzero",
+    "target": "alt1",
+    "label": "H1",
+    "operator": "H1"
+  },
+  {
+    "id": "e-v0-nzero-x0",
+    "source": "nzero",
+    "target": "x0",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-v1-nzero-ne1x",
+    "source": "nzero",
+    "target": "ne1x",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-dl0-x0-nzero",
+    "source": "x0",
+    "target": "nzero",
+    "label": "DL0",
+    "operator": "DL0"
+  },
+  {
+    "id": "e-v0-x0-nzero",
+    "source": "x0",
+    "target": "nzero",
+    "label": "V0",
+    "operator": "V0"
+  },
+  {
+    "id": "e-dl1-ne1x-nzero",
+    "source": "ne1x",
+    "target": "nzero",
+    "label": "DL1",
+    "operator": "DL1"
+  },
+  {
+    "id": "e-v1-ne1x-nzero",
+    "source": "ne1x",
+    "target": "nzero",
+    "label": "V1",
+    "operator": "V1"
+  },
+  {
+    "id": "e-pos-nalt1-nzero",
+    "source": "nalt1",
+    "target": "nzero",
+    "label": "Pos",
+    "operator": "Pos"
+  },
+  {
+    "id": "e-h0-nalt1-nzero",
+    "source": "nalt1",
+    "target": "nzero",
+    "label": "H0",
+    "operator": "H0"
+  },
+  {
+    "id": "e-neg-alt1-nzero",
+    "source": "alt1",
+    "target": "nzero",
+    "label": "Neg",
+    "operator": "Neg"
+  },
+  {
+    "id": "e-h1-alt1-nzero",
+    "source": "alt1",
+    "target": "nzero",
+    "label": "H1",
+    "operator": "H1"
+  }
 ]
