@@ -336,13 +336,6 @@
     "operator": "DL1"
   },
   {
-    "id": "e-fact-per10",
-    "source": "fact",
-    "target": "per10",
-    "label": "∇ DL1",
-    "operator": "DL1"
-  },
-  {
     "id": "e-subfact-per10",
     "source": "subfact",
     "target": "per10",
