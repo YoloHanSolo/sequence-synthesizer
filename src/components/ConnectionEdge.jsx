@@ -1,4 +1,4 @@
-import { getBezierPath, EdgeLabelRenderer, BaseEdge } from '@xyflow/react'
+import { getBezierPath, BaseEdge } from '@xyflow/react'
 
 /** Build an SVG path for a self-loop above the node */
 function selfLoopPath(cx, cy, r = 36) {
@@ -20,12 +20,11 @@ export default function ConnectionEdge({
 }) {
   const isSelf = data?.selfLoop
 
-  let edgePath, labelX, labelY
+  let edgePath
   if (isSelf) {
-    const s = selfLoopPath(sourceX, sourceY)
-    edgePath = s.path; labelX = s.labelX; labelY = s.labelY
+    edgePath = selfLoopPath(sourceX, sourceY).path
   } else {
-    ;[edgePath, labelX, labelY] = getBezierPath({
+    ;[edgePath] = getBezierPath({
       sourceX, sourceY, sourcePosition,
       targetX, targetY, targetPosition,
     })
@@ -35,7 +34,6 @@ export default function ConnectionEdge({
   const hasBwd         = data?.backward?.length > 0
   const pulse          = data?.pulse
   const transformColor = data?.transformColor ?? null
-  const opCount        = (data?.forward?.length ?? 0) + (data?.backward?.length ?? 0)
   const lineColor      = transformColor ?? '#2a2a4a'
   const glowColor      = transformColor ? transformColor + '66' : 'none'
 
@@ -68,37 +66,6 @@ export default function ConnectionEdge({
         />
       )}
 
-      <EdgeLabelRenderer>
-        <div
-          style={{
-            position: 'absolute',
-            transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
-            pointerEvents: 'all',
-            cursor: 'pointer',
-          }}
-          className="nodrag nopan"
-          title={`${opCount} operator${opCount !== 1 ? 's' : ''}`}
-        >
-          <div style={{
-            width: 16,
-            height: 16,
-            borderRadius: '50%',
-            background: transformColor ? transformColor + '22' : '#13131a',
-            border: `1px solid ${transformColor ?? '#2a2a5a'}`,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 9,
-            fontFamily: 'JetBrains Mono, monospace',
-            color: transformColor ?? '#3a3a6a',
-            fontWeight: 'bold',
-            transition: 'all 0.2s',
-            boxShadow: transformColor ? `0 0 6px ${transformColor}88` : 'none',
-          }}>
-            {opCount > 9 ? '…' : opCount}
-          </div>
-        </div>
-      </EdgeLabelRenderer>
     </>
   )
 }

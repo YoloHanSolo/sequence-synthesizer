@@ -55,13 +55,21 @@ function buildMergedEdges(rawEdges) {
 
 const BASE_MERGED_EDGES = buildMergedEdges(INITIAL_EDGES)
 
+const OPPOSITE = { right: 'left', left: 'right', top: 'bottom', bottom: 'top' }
+
+function edgeSide(dx, dy) {
+  return Math.abs(dx) >= Math.abs(dy)
+    ? (dx >= 0 ? 'right' : 'left')
+    : (dy >= 0 ? 'bottom' : 'top')
+}
+
 const ALL_TYPE_IDS = ['seed', 'poly', 'exponential', 'recurrence']
 const ALL_TRANSFORM_IDS = FILTERABLE_TRANSFORMS.map(t => t.id)
 
 function loadSet(key, defaults) {
   try {
     const saved = JSON.parse(localStorage.getItem(key))
-    if (Array.isArray(saved) && saved.length > 0) return new Set(saved)
+    if (Array.isArray(saved)) return new Set(saved)
   } catch {}
   return new Set(defaults)
 }
@@ -85,8 +93,11 @@ const pulseTimer = useRef(null)
   )
 
   const displayEdges = useMemo(() => {
+    const nodePos = Object.fromEntries(allNodes.map(n => [n.id, n.position]))
+
     return BASE_MERGED_EDGES
       .filter(edge => {
+        if (activeTransforms.size === 0) return false
         if (!visibleNodeIds.has(edge.source) || !visibleNodeIds.has(edge.target)) return false
         const allPaths = [...(edge.data.forward ?? []), ...(edge.data.backward ?? [])]
         return allPaths.some(p =>
@@ -101,16 +112,30 @@ const pulseTimer = useRef(null)
           .filter(Boolean)
         const activeOp = allOps.find(op => activeTransforms.has(op))
         const transformColor = activeOp ? TRANSFORM_COLOR[activeOp] : null
+
+        let sourceHandle = 'source-right'
+        let targetHandle = 'target-left'
+        if (!edge.data.selfLoop) {
+          const posA = nodePos[edge.source]
+          const posB = nodePos[edge.target]
+          if (posA && posB) {
+            const side = edgeSide(posB.x - posA.x, posB.y - posA.y)
+            sourceHandle = `source-${side}`
+            targetHandle = `target-${OPPOSITE[side]}`
+          }
+        }
+
         return {
           ...edge,
+          sourceHandle,
+          targetHandle,
           data: { ...edge.data, pulse: pulseEdgeId === edge.id, transformColor },
         }
       })
-  }, [visibleNodeIds, activeTransforms, pulseEdgeId])
+  }, [visibleNodeIds, activeTransforms, pulseEdgeId, allNodes])
 
   const toggleType = useCallback((id) => {
     setActiveTypes(prev => {
-      if (prev.has(id) && prev.size === 1) return prev
       const next = new Set(prev)
       next.has(id) ? next.delete(id) : next.add(id)
       localStorage.setItem('seq-activeTypes', JSON.stringify([...next]))
@@ -120,7 +145,6 @@ const pulseTimer = useRef(null)
 
   const toggleTransform = useCallback((id) => {
     setActiveTransforms(prev => {
-      if (prev.has(id) && prev.size === 1) return prev
       const next = new Set(prev)
       next.has(id) ? next.delete(id) : next.add(id)
       localStorage.setItem('seq-activeTransforms', JSON.stringify([...next]))
