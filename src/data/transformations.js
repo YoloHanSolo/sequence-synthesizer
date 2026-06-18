@@ -110,6 +110,15 @@ export const TRANSFORMATIONS = [
     matrix: [[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 2, 0], [0, 0, 0, 3]],
     fn: m([[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 2, 0], [0, 0, 0, 3]]),
   },
+  {
+    id: 'Sierp',
+    name: 'Sierpinski',
+    color: '#e879f9',
+    filterable: true,
+    description: 'Pascal mod 2: S[n]=Σv[k] where C(n,k) odd',
+    matrix: [[1, 0, 0, 0], [1, 1, 0, 0], [1, 0, 1, 0], [1, 1, 1, 1]],
+    fn: m([[1, 0, 0, 0], [1, 1, 0, 0], [1, 0, 1, 0], [1, 1, 1, 1]]),
+  },
 ]
 
 export const TRANSFORM_MAP = Object.fromEntries(TRANSFORMATIONS.map(t => [t.id, t]))

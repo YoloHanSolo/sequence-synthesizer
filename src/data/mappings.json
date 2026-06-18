@@ -175,20 +175,6 @@
     "operator": "P"
   },
   {
-    "id": "e-s0110-tri",
-    "source": "s0110",
-    "target": "tri",
-    "label": "⊕ Pos",
-    "operator": "Pos"
-  },
-  {
-    "id": "e-tri-s0110",
-    "source": "tri",
-    "target": "s0110",
-    "label": "∇ DL1",
-    "operator": "DL1"
-  },
-  {
     "id": "e-s01436-x4",
     "source": "s01436",
     "target": "x4",
@@ -1064,23 +1050,9 @@
     "operator": "SeedGen"
   },
   {
-    "id": "e-sg-tri-x3",
-    "source": "tri",
-    "target": "x3",
-    "label": "M",
-    "operator": "SeedGen"
-  },
-  {
     "id": "e-p-n110-s010",
     "source": "n110",
     "target": "s010",
-    "label": "P",
-    "operator": "P"
-  },
-  {
-    "id": "e-p-s0110-s0120",
-    "source": "s0110",
-    "target": "s0120",
     "label": "P",
     "operator": "P"
   },
@@ -1246,13 +1218,6 @@
     "operator": "AbsDiff"
   },
   {
-    "id": "e-fib-s0110-absdiff",
-    "source": "fib",
-    "target": "s0110",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
     "id": "e-fib2-fib-absdiff",
     "source": "fib2",
     "target": "fib",
@@ -1291,13 +1256,6 @@
     "id": "e-e4x-e3x-absdiff",
     "source": "e4x",
     "target": "e3x",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
-    "id": "e-tri-s0110-absdiff",
-    "source": "tri",
-    "target": "s0110",
     "label": "AbsDiff",
     "operator": "AbsDiff"
   },
@@ -1383,5 +1341,23 @@
     "label": "AbsDiff",
     "operator": "AbsDiff",
     "steps": 4
+  },
+  {
+    "id": "e-zero-x0-sierp",
+    "source": "zero",
+    "target": "x0",
+    "operator": "Sierp"
+  },
+  {
+    "id": "e-s010-per01-sierp",
+    "source": "s010",
+    "target": "per01",
+    "operator": "Sierp"
+  },
+  {
+    "id": "e-nzero-ne1x-sierp",
+    "source": "nzero",
+    "target": "ne1x",
+    "operator": "Sierp"
   }
 ]
