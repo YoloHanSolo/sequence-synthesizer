@@ -64,7 +64,7 @@ for (const e of fresh) {
   const key = `${e.src}|${e.op}|${e.tgt}`
   if (!firstHit.has(key) || e.step < firstHit.get(key).step) firstHit.set(key, e)
 }
-const display = [...firstHit.values()].filter(e => e.step === 1 || e.op === 'AbsDiff')
+const display = [...firstHit.values()].filter(e => e.step === 1)
 
 console.log(`\n=== NEW (${display.length}) ===`)
 for (const e of display) {
