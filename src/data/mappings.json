@@ -259,41 +259,6 @@
     "operator": null
   },
   {
-    "id": "e-n110-cfib",
-    "source": "n110",
-    "target": "cfib",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-cfib-n110",
-    "source": "cfib",
-    "target": "n110",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-cfib-self",
-    "source": "cfib",
-    "target": "cfib",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-cfib-fib",
-    "source": "cfib",
-    "target": "fib",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-fib-cfib",
-    "source": "fib",
-    "target": "cfib",
-    "label": "Δ",
-    "operator": null
-  },
-  {
     "id": "e-fib-fib2",
     "source": "fib",
     "target": "fib2",
@@ -1359,5 +1324,26 @@
     "source": "nzero",
     "target": "ne1x",
     "operator": "Sierp"
+  },
+  {
+    "id": "e-p-s0110-s0120",
+    "source": "s0110",
+    "target": "s0120",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-p-s1110-s0120",
+    "source": "s1110",
+    "target": "s0120",
+    "label": "P",
+    "operator": "P"
+  },
+  {
+    "id": "e-fib-s0110-absdiff",
+    "source": "fib",
+    "target": "s0110",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
   }
 ]

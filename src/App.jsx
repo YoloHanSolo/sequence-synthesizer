@@ -28,6 +28,7 @@ const TYPE_FILTERS = [
   { id: 'poly',        label: 'P', name: 'Poly',         color: '#00d4ff' },
   { id: 'exponential', label: 'E', name: 'Exp',          color: '#ff9500' },
   { id: 'recurrence',  label: 'R', name: 'Rec',          color: '#00ff88' },
+  { id: 'alternating', label: 'A', name: 'Alt',          color: '#bf5af2' },
 ]
 
 function buildMergedEdges(rawEdges) {
@@ -70,7 +71,7 @@ function getHandles(srcId, tgtId, nodePos) {
   return { sourceHandle: `source-${side}`, targetHandle: `target-${OPPOSITE[side]}` }
 }
 
-const ALL_TYPE_IDS = ['seed', 'poly', 'exponential', 'recurrence']
+const ALL_TYPE_IDS = ['seed', 'poly', 'exponential', 'recurrence', 'alternating']
 const ALL_TRANSFORM_IDS = FILTERABLE_TRANSFORMS.map(t => t.id)
 
 function loadSet(key, defaults) {
@@ -93,8 +94,18 @@ const pulseTimer = useRef(null)
     setNodes(INITIAL_NODES)
   }, [setNodes])
 
+  const hideAllTypes = useCallback(() => {
+    setActiveTypes(new Set())
+    localStorage.setItem('seq-activeTypes', JSON.stringify([]))
+  }, [])
+
+  const hideAllTransforms = useCallback(() => {
+    setActiveTransforms(new Set())
+    localStorage.setItem('seq-activeTransforms', JSON.stringify([]))
+  }, [])
+
   const visibleNodes = useMemo(() =>
-    allNodes.filter(n => n.data.type === 'alternating' || activeTypes.has(n.data.type)),
+    allNodes.filter(n => activeTypes.has(n.data.type)),
     [allNodes, activeTypes]
   )
 
@@ -209,26 +220,35 @@ const pulseTimer = useRef(null)
             <span className="font-bold text-sm" style={{ color: '#00d4ff' }}>SEQUENCE SYNTHESIZER</span>
             <span className="ml-3 text-xs" style={{ color: '#3a3a5a' }}>Horizon of Seeds Map</span>
           </div>
-          <button
-            onClick={resetPositions}
-            title="Reset node positions"
-            style={{
-              padding: '3px 10px',
-              borderRadius: 4,
-              fontSize: 11,
-              fontFamily: 'JetBrains Mono, monospace',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              background: '#0d0d0f',
-              border: '1px solid #2a2a4a',
-              color: '#3a3a5a',
-              transition: 'all 0.15s',
-            }}
-            onMouseEnter={e => { e.target.style.borderColor = '#00d4ff'; e.target.style.color = '#00d4ff' }}
-            onMouseLeave={e => { e.target.style.borderColor = '#2a2a4a'; e.target.style.color = '#3a3a5a' }}
-          >
-            reset layout
-          </button>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {[
+              { label: 'reset layout',    onClick: resetPositions,  title: 'Reset node positions' },
+              { label: 'hide types',      onClick: hideAllTypes,    title: 'Hide all node types' },
+              { label: 'hide transforms', onClick: hideAllTransforms, title: 'Hide all transform edges' },
+            ].map(({ label, onClick, title }) => (
+              <button
+                key={label}
+                onClick={onClick}
+                title={title}
+                style={{
+                  padding: '3px 10px',
+                  borderRadius: 4,
+                  fontSize: 11,
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  background: '#0d0d0f',
+                  border: '1px solid #3a3a6a',
+                  color: '#7070a8',
+                  transition: 'all 0.15s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = '#00d4ff'; e.currentTarget.style.color = '#00d4ff' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = '#3a3a6a'; e.currentTarget.style.color = '#7070a8' }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Transform filter column — top left */}
