@@ -18,9 +18,9 @@ const MATRICES = {
 
 const FUNCTIONS = {
   AbsDiff: v => {
-    const a = [...v]
+    const a = v.slice(0, 4)
     const result = [a[0]]
-    for (let len = v.length - 1; len > 0; len--) {
+    for (let len = a.length - 1; len > 0; len--) {
       for (let i = 0; i < len; i++) a[i] = Math.abs(a[i + 1] - a[i])
       result.push(a[0])
     }

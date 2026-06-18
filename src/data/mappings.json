@@ -210,69 +210,6 @@
     "operator": "SeedGen"
   },
   {
-    "id": "e-s010-per01",
-    "source": "s010",
-    "target": "per01",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-per01-s010",
-    "source": "per01",
-    "target": "s010",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-s0120-per01",
-    "source": "s0120",
-    "target": "per01",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-s01660-per01",
-    "source": "s01660",
-    "target": "per01",
-    "label": "3·Δ",
-    "operator": null
-  },
-  {
-    "id": "e-per01-per10",
-    "source": "per01",
-    "target": "per10",
-    "label": "∞",
-    "operator": null
-  },
-  {
-    "id": "e-per10-per01",
-    "source": "per10",
-    "target": "per01",
-    "label": "∞",
-    "operator": null
-  },
-  {
-    "id": "e-n110-per01",
-    "source": "n110",
-    "target": "per01",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-fib-fib2",
-    "source": "fib",
-    "target": "fib2",
-    "label": "Δ",
-    "operator": null
-  },
-  {
-    "id": "e-fib2-fib",
-    "source": "fib2",
-    "target": "fib",
-    "label": "⊕",
-    "operator": null
-  },
-  {
     "id": "e-subfact-fact",
     "source": "subfact",
     "target": "fact",
@@ -285,13 +222,6 @@
     "target": "subfact",
     "label": "∇ DL1",
     "operator": "DL1"
-  },
-  {
-    "id": "e-subfact-per10",
-    "source": "subfact",
-    "target": "per10",
-    "label": "Δ",
-    "operator": null
   },
   {
     "id": "e-x0-e2x",
@@ -1183,13 +1113,6 @@
     "operator": "AbsDiff"
   },
   {
-    "id": "e-subfact-n110-absdiff",
-    "source": "subfact",
-    "target": "n110",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
     "id": "e-fact-subfact-absdiff",
     "source": "fact",
     "target": "subfact",
@@ -1293,14 +1216,6 @@
     "steps": 2
   },
   {
-    "id": "e-s01436-s01660-absdiff4",
-    "source": "s01436",
-    "target": "s01660",
-    "label": "AbsDiff",
-    "operator": "AbsDiff",
-    "steps": 4
-  },
-  {
     "id": "e-zero-x0-sierp",
     "source": "zero",
     "target": "x0",
@@ -1333,6 +1248,28 @@
     "operator": "P"
   },
   {
+    "id": "e-fib-per011-absdiff",
+    "source": "fib",
+    "target": "per011",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-subfact-n110-absdiff",
+    "source": "subfact",
+    "target": "n110",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-s01436-s01660-absdiff4",
+    "source": "s01436",
+    "target": "s01660",
+    "label": "AbsDiff×4",
+    "operator": "AbsDiff",
+    "steps": 4
+  },
+  {
     "id": "e-s1010-n110-absdiff",
     "source": "s1010",
     "target": "n110",
@@ -1356,13 +1293,6 @@
   {
     "id": "e-s0110-per011-absdiff",
     "source": "s0110",
-    "target": "per011",
-    "label": "AbsDiff",
-    "operator": "AbsDiff"
-  },
-  {
-    "id": "e-fib-per011-absdiff",
-    "source": "fib",
     "target": "per011",
     "label": "AbsDiff",
     "operator": "AbsDiff"
