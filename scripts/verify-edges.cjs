@@ -15,8 +15,18 @@ const MATRICES = {
   P:      [[0,0,0,0],[0,1,0,0],[0,0,2,0],[0,0,0,3]],
 }
 
+const FUNCTIONS = {
+  AbsDiff: v => [Math.abs(v[1]-v[0]), Math.abs(v[2]-v[1]), Math.abs(v[3]-v[2]), 0],
+}
+
 function matMul(M, v) {
   return M.map(row => row.reduce((s, m, c) => s + m * v[c], 0))
+}
+
+function applyOp(opName, v) {
+  if (MATRICES[opName]) return matMul(MATRICES[opName], v)
+  if (FUNCTIONS[opName]) return FUNCTIONS[opName](v)
+  return null
 }
 
 const nodeMap = Object.fromEntries(seqs.map(n => [n.id, n]))
@@ -36,10 +46,8 @@ for (const e of mappings) {
     continue
   }
 
-  const M = MATRICES[e.operator]
-  if (!M) { bad.push({ id: e.id, reason: `unknown operator '${e.operator}'` }); continue }
-
-  const result = matMul(M, src.values)
+  const result = applyOp(e.operator, src.values)
+  if (result === null) { bad.push({ id: e.id, reason: `unknown operator '${e.operator}'` }); continue }
   const match = result.every((v, i) => v === tgt.values[i])
   if (!match) {
     bad.push({

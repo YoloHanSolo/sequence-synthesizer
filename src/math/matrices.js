@@ -59,9 +59,26 @@ export function matMul(M, v) {
   return result
 }
 
-/** Apply a named operator to a vector */
+/** Non-linear transform functions (cannot be expressed as 4×4 matrices) */
+export const FUNCTIONS = {
+  // Consecutive absolute differences; 4th element is 0 (requires f(4) to compute)
+  AbsDiff: v => [
+    Math.abs(v[1] - v[0]),
+    Math.abs(v[2] - v[1]),
+    Math.abs(v[3] - v[2]),
+    0,
+  ],
+}
+
+export const FUNCTION_DESCRIPTIONS = {
+  AbsDiff: '|f(n+1)−f(n)|',
+}
+
+/** Apply a named operator (matrix or function) to a 4-vector */
 export function applyOp(opName, v) {
-  return matMul(MATRICES[opName], v)
+  if (MATRICES[opName]) return matMul(MATRICES[opName], v)
+  if (FUNCTIONS[opName]) return FUNCTIONS[opName](v)
+  throw new Error(`Unknown operator: ${opName}`)
 }
 
 /** Format vector for display */

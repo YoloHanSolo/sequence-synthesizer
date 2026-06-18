@@ -1,5 +1,5 @@
 import React from 'react'
-import { MATRICES, MATRIX_DESCRIPTIONS } from '../math/matrices'
+import { MATRICES, MATRIX_DESCRIPTIONS, FUNCTIONS, FUNCTION_DESCRIPTIONS } from '../math/matrices'
 import { M } from '../math/format.jsx'
 
 const COLOR_MAP = {
@@ -65,6 +65,7 @@ export default function Inspector({ node }) {
 function OperatorPreview({ values, accent }) {
   const [open, setOpen] = React.useState(false)
   const matNames = Object.keys(MATRICES)
+  const fnNames  = Object.keys(FUNCTIONS)
 
   return (
     <div>
@@ -106,6 +107,31 @@ function OperatorPreview({ values, accent }) {
                       <span style={{ color: '#4a4a6a' }}>→</span>
                       <span style={{ color: '#ffd60a', fontSize: '10px' }} className="font-bold">{res[ri]}</span>
                     </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+          {fnNames.map(name => {
+            const res = FUNCTIONS[name](values)
+            return (
+              <div key={name} className="rounded p-2" style={{ background: '#0d0d14', border: '1px solid #1e1e2e' }}>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-bold" style={{ color: accent }}>{name}</span>
+                  <span style={{ color: '#3a3a5a', fontSize: '9px' }}>{FUNCTION_DESCRIPTIONS[name]}</span>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <span style={{ color: '#4a4a6a', fontSize: '9px' }}>→</span>
+                  {res.map((v, i) => (
+                    <span key={i}
+                      className="w-6 text-center rounded"
+                      style={{
+                        color: v === 0 ? '#3a3a5a' : '#ffd60a',
+                        fontSize: '10px',
+                        background: '#1a1a2a',
+                      }}>
+                      {v}
+                    </span>
                   ))}
                 </div>
               </div>

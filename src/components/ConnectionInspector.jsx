@@ -1,5 +1,5 @@
 import React from 'react'
-import { MATRICES, SEEDGEN_FULL_5x5, P_FULL_5x5 } from '../math/matrices'
+import { MATRICES, FUNCTIONS, SEEDGEN_FULL_5x5, P_FULL_5x5 } from '../math/matrices'
 import { M, mathFmt } from '../math/format.jsx'
 
 const COLOR_MAP = {
@@ -79,10 +79,13 @@ function PathGroup({ label, ops, srcVec, tgtVec, srcAccent, tgtAccent }) {
 
 function OpRow({ op, srcVec, tgtVec, srcAccent, tgtAccent }) {
   const Mmat   = op.operator ? MATRICES[op.operator] : null
-  const result = Mmat ? Mmat.map(row => row.reduce((s, c, j) => s + c * srcVec[j], 0)) : null
+  const fn     = op.operator ? FUNCTIONS[op.operator] : null
+  const result = Mmat
+    ? Mmat.map(row => row.reduce((s, c, j) => s + c * srcVec[j], 0))
+    : fn ? fn(srcVec)
+    : null
   const valid  = result ? result.every((v, i) => v === tgtVec[i]) : null
 
-  // Strip ∇/⊕ prefix from label — just show op name cleanly
   const cleanLabel = op.operator ?? op.label
 
   return (

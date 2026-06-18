@@ -96,6 +96,13 @@
     ]
   },
   {
+    "id": "AbsDiff",
+    "name": "Absolute Difference",
+    "color": "#fb923c",
+    "filterable": true,
+    "matrix": null
+  },
+  {
     "id": "SeedGen",
     "name": "Seed Generator",
     "color": null,

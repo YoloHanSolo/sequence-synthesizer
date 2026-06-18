@@ -1195,5 +1195,47 @@
     "target": "nzero",
     "label": "H1",
     "operator": "H1"
+  },
+  {
+    "id": "e-nzero-zero-absdiff",
+    "source": "nzero",
+    "target": "zero",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-fib-per10-absdiff",
+    "source": "fib",
+    "target": "per10",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-n110-s010-absdiff",
+    "source": "n110",
+    "target": "s010",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-s010-n110-absdiff",
+    "source": "s010",
+    "target": "n110",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-s0110-per10-absdiff",
+    "source": "s0110",
+    "target": "per10",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
+  },
+  {
+    "id": "e-cfib-s0110-absdiff",
+    "source": "cfib",
+    "target": "s0110",
+    "label": "AbsDiff",
+    "operator": "AbsDiff"
   }
 ]
