@@ -1,0 +1,258 @@
+[
+  {
+    "id": "alt4",
+    "label": "(-1)^x · 4^x",
+    "formula": "(-1)^x · 4^x = (-4)^x",
+    "values": [1, -4, 16, -64],
+    "type": "alternating",
+    "position": { "x": 0, "y": -60 }
+  },
+  {
+    "id": "nalt4",
+    "label": "-(-1)^x · 4^x",
+    "formula": "-(-1)^x · 4^x",
+    "values": [-1, 4, -16, 64],
+    "type": "alternating",
+    "position": { "x": 160, "y": -60 }
+  },
+  {
+    "id": "nalt3",
+    "label": "-(-1)^x · 3^x",
+    "formula": "-(-1)^x · 3^x = -(-3)^x",
+    "values": [-1, 3, -9, 27],
+    "type": "alternating",
+    "position": { "x": 160, "y": 60 }
+  },
+  {
+    "id": "nalt2",
+    "label": "-(-1)^x · 2^x",
+    "formula": "-(-1)^x · 2^x",
+    "values": [-1, 2, -4, 8],
+    "type": "alternating",
+    "position": { "x": 160, "y": 180 }
+  },
+  {
+    "id": "nalt1",
+    "label": "-(-1)^x · 1^x",
+    "formula": "-(-1)^x",
+    "values": [-1, 1, -1, 1],
+    "type": "alternating",
+    "position": { "x": 160, "y": 295 }
+  },
+  {
+    "id": "alt3",
+    "label": "(-1)^x · 3^x",
+    "formula": "(-1)^x · 3^x = (-3)^x",
+    "values": [1, -3, 9, -27],
+    "type": "alternating",
+    "position": { "x": 0, "y": 60 }
+  },
+  {
+    "id": "alt2",
+    "label": "(-1)^x · 2^x",
+    "formula": "(-1)^x · 2^x",
+    "values": [1, -2, 4, -8],
+    "type": "alternating",
+    "position": { "x": 0, "y": 180 }
+  },
+  {
+    "id": "alt1",
+    "label": "(-1)^x · 1^x",
+    "formula": "(-1)^x",
+    "values": [1, -1, 1, -1],
+    "type": "alternating",
+    "position": { "x": 0, "y": 295 }
+  },
+  {
+    "id": "zero",
+    "label": "0^x = [10*]",
+    "formula": "0^x  (anchor)",
+    "values": [1, 0, 0, 0],
+    "type": "seed",
+    "position": { "x": 80, "y": 410 }
+  },
+  {
+    "id": "s010",
+    "label": "[010*]",
+    "formula": "e₁ basis vector",
+    "values": [0, 1, 0, 0],
+    "type": "seed",
+    "position": { "x": 280, "y": 410 }
+  },
+  {
+    "id": "s0120",
+    "label": "[0120*]",
+    "formula": "Stirling S(n,2)",
+    "values": [0, 1, 2, 0],
+    "type": "seed",
+    "position": { "x": 480, "y": 410 }
+  },
+  {
+    "id": "s01660",
+    "label": "[01660*]",
+    "formula": "Stirling S(n,3)",
+    "values": [0, 1, 6, 6],
+    "type": "seed",
+    "position": { "x": 680, "y": 410 }
+  },
+  {
+    "id": "s01436",
+    "label": "[0,1,14,36,24,0*]",
+    "formula": "Stirling S(n,4)",
+    "values": [0, 1, 14, 36],
+    "type": "seed",
+    "position": { "x": 880, "y": 410 }
+  },
+  {
+    "id": "per01",
+    "label": "[01]*",
+    "formula": "periodic 01",
+    "values": [0, 1, 0, 1],
+    "type": "seed",
+    "position": { "x": 500, "y": 130 }
+  },
+  {
+    "id": "zstar",
+    "label": "[0*]",
+    "formula": "zero sequence",
+    "values": [0, 0, 0, 0],
+    "type": "seed",
+    "position": { "x": -120, "y": 410 }
+  },
+  {
+    "id": "per10",
+    "label": "[10]*",
+    "formula": "periodic 10",
+    "values": [1, 0, 1, 0],
+    "type": "seed",
+    "position": { "x": 500, "y": -30 }
+  },
+  {
+    "id": "n110",
+    "label": "[110*]",
+    "formula": "indicator {0,1}",
+    "values": [1, 1, 0, 0],
+    "type": "seed",
+    "position": { "x": 500, "y": -190 }
+  },
+  {
+    "id": "s0110",
+    "label": "[0110*]",
+    "formula": "twin spark seed",
+    "values": [0, 1, 1, 0],
+    "type": "seed",
+    "position": { "x": 500, "y": -350 }
+  },
+  {
+    "id": "cfib",
+    "label": "C[01²]*",
+    "formula": "conv([01]*²)",
+    "values": [0, 0, 1, 0],
+    "type": "recurrence",
+    "position": { "x": 720, "y": -190 }
+  },
+  {
+    "id": "fib",
+    "label": "F_n  Fibonacci",
+    "formula": "F(n)=F(n-1)+F(n-2)",
+    "values": [0, 1, 1, 2],
+    "type": "recurrence",
+    "position": { "x": 720, "y": 130 }
+  },
+  {
+    "id": "fib2",
+    "label": "F_n^2",
+    "formula": "F_n^2",
+    "values": [0, 1, 1, 4],
+    "type": "recurrence",
+    "position": { "x": 940, "y": 130 }
+  },
+  {
+    "id": "subfact",
+    "label": "!n  Subfactorial",
+    "formula": "!n=(n-1)(!(n-1)+!(n-2))",
+    "values": [1, 0, 1, 2],
+    "type": "recurrence",
+    "position": { "x": 720, "y": -30 }
+  },
+  {
+    "id": "fact",
+    "label": "n!  Factorial",
+    "formula": "n!",
+    "values": [1, 1, 2, 6],
+    "type": "recurrence",
+    "position": { "x": 940, "y": -30 }
+  },
+  {
+    "id": "e2x",
+    "label": "2^x",
+    "formula": "2^x",
+    "values": [1, 2, 4, 8],
+    "type": "exponential",
+    "position": { "x": 80, "y": 625 }
+  },
+  {
+    "id": "e3x",
+    "label": "3^x",
+    "formula": "3^x",
+    "values": [1, 3, 9, 27],
+    "type": "exponential",
+    "position": { "x": 80, "y": 725 }
+  },
+  {
+    "id": "e4x",
+    "label": "4^x",
+    "formula": "4^x",
+    "values": [1, 4, 16, 64],
+    "type": "exponential",
+    "position": { "x": 80, "y": 825 }
+  },
+  {
+    "id": "tri",
+    "label": "T_n  (triangular)",
+    "formula": "x(x+1)/2",
+    "values": [0, 1, 3, 6],
+    "type": "poly",
+    "position": { "x": 720, "y": -350 }
+  },
+  {
+    "id": "x0",
+    "label": "1^x = x^0",
+    "formula": "x^0 = 1",
+    "values": [1, 1, 1, 1],
+    "type": "exponential",
+    "position": { "x": 80, "y": 525 }
+  },
+  {
+    "id": "x1",
+    "label": "x^1",
+    "formula": "x^1",
+    "values": [0, 1, 2, 3],
+    "type": "poly",
+    "position": { "x": 280, "y": 525 }
+  },
+  {
+    "id": "x2",
+    "label": "x^2",
+    "formula": "x^2",
+    "values": [0, 1, 4, 9],
+    "type": "poly",
+    "position": { "x": 480, "y": 525 }
+  },
+  {
+    "id": "x3",
+    "label": "x^3",
+    "formula": "x^3",
+    "values": [0, 1, 8, 27],
+    "type": "poly",
+    "position": { "x": 680, "y": 525 }
+  },
+  {
+    "id": "x4",
+    "label": "x^4",
+    "formula": "x^4",
+    "values": [0, 1, 16, 81],
+    "type": "poly",
+    "position": { "x": 880, "y": 525 }
+  }
+]

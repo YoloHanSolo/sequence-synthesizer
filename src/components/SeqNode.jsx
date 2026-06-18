@@ -6,6 +6,7 @@ const COLOR_MAP = {
   blue:   { border: '#00d4ff', glow: '#00d4ff88', text: '#00d4ff', bg: '#0a141a' },
   green:  { border: '#00ff88', glow: '#00ff8888', text: '#00ff88', bg: '#0a1a0f' },
   purple: { border: '#bf5af2', glow: '#bf5af288', text: '#bf5af2', bg: '#130a1a' },
+  orange: { border: '#ff9500', glow: '#ff950088', text: '#ff9500', bg: '#1a0d00' },
 }
 
 export default function SeqNode({ data, selected }) {

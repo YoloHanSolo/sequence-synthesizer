@@ -1,0 +1,82 @@
+[
+  { "id": "e-alt3-alt4",   "source": "alt3",  "target": "alt4",  "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-alt4-alt3",   "source": "alt4",  "target": "alt3",  "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-nalt3-nalt4", "source": "nalt3", "target": "nalt4", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-nalt4-nalt3", "source": "nalt4", "target": "nalt3", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-e3x-e4x",    "source": "e3x",   "target": "e4x",   "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-e4x-e3x",    "source": "e4x",   "target": "e3x",   "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-x3-x4-P",    "source": "x3",    "target": "x4",    "label": "P",      "operator": "P"   },
+
+  { "id": "e-alt2-alt3", "source": "alt2", "target": "alt3", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-alt3-alt2", "source": "alt3", "target": "alt2", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-alt1-alt2", "source": "alt1", "target": "alt2", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-alt2-alt1", "source": "alt2", "target": "alt1", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-zero-alt1", "source": "zero", "target": "alt1", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-alt1-zero", "source": "alt1", "target": "zero", "label": "⊕ Pos", "operator": "Pos" },
+
+  { "id": "e-x0-alt2", "source": "x0", "target": "alt2", "label": "H0", "operator": "H0" },
+
+  { "id": "e-zero-x0", "source": "zero", "target": "x0",   "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-x0-zero", "source": "x0",   "target": "zero", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-s010-x1", "source": "s010", "target": "x1",   "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-x1-s010", "source": "x1",   "target": "s010", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-s0120-x2",  "source": "s0120",  "target": "x2",     "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-x2-s0120",  "source": "x2",     "target": "s0120",  "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-s01660-x3", "source": "s01660", "target": "x3",     "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-x3-s01660", "source": "x3",     "target": "s01660", "label": "∇ DL1", "operator": "DL1" },
+
+  { "id": "e-x0-x1-P", "source": "x0", "target": "x1", "label": "P", "operator": "P" },
+  { "id": "e-x1-x2-P", "source": "x1", "target": "x2", "label": "P", "operator": "P" },
+  { "id": "e-x2-x3-P", "source": "x2", "target": "x3", "label": "P", "operator": "P" },
+
+  { "id": "e-s0110-tri", "source": "s0110", "target": "tri",   "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-tri-s0110", "source": "tri",   "target": "s0110", "label": "∇ DL1", "operator": "DL1" },
+
+  { "id": "e-s01436-x4", "source": "s01436", "target": "x4",     "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-x4-s01436", "source": "x4",     "target": "s01436", "label": "∇ DL1", "operator": "DL1" },
+
+  { "id": "e-s010-s0120",    "source": "s010",   "target": "s0120",   "label": "M", "operator": "SeedGen" },
+  { "id": "e-s0120-s01660",  "source": "s0120",  "target": "s01660",  "label": "M", "operator": "SeedGen" },
+  { "id": "e-s01660-s01436", "source": "s01660", "target": "s01436",  "label": "M", "operator": "SeedGen" },
+
+  { "id": "e-s010-per01",  "source": "s010",  "target": "per01", "label": "Δ", "operator": null },
+  { "id": "e-per01-s010",  "source": "per01", "target": "s010",  "label": "Δ", "operator": null },
+  { "id": "e-s0120-per01",  "source": "s0120",  "target": "per01", "label": "Δ",   "operator": null },
+  { "id": "e-s01660-per01", "source": "s01660", "target": "per01", "label": "3·Δ", "operator": null },
+
+  { "id": "e-per01-per10", "source": "per01", "target": "per10", "label": "∞", "operator": null },
+  { "id": "e-per10-per01", "source": "per10", "target": "per01", "label": "∞", "operator": null },
+
+  { "id": "e-n110-per01", "source": "n110", "target": "per01", "label": "Δ", "operator": null },
+  { "id": "e-n110-cfib",  "source": "n110", "target": "cfib",  "label": "Δ", "operator": null },
+  { "id": "e-cfib-n110",  "source": "cfib", "target": "n110",  "label": "Δ", "operator": null },
+
+  { "id": "e-cfib-self", "source": "cfib", "target": "cfib", "label": "Δ", "operator": null },
+
+  { "id": "e-cfib-fib",  "source": "cfib", "target": "fib",  "label": "Δ", "operator": null },
+  { "id": "e-fib-cfib",  "source": "fib",  "target": "cfib", "label": "Δ", "operator": null },
+
+  { "id": "e-fib-fib2", "source": "fib",  "target": "fib2", "label": "Δ",  "operator": null },
+  { "id": "e-fib2-fib", "source": "fib2", "target": "fib",  "label": "⊕", "operator": null },
+
+  { "id": "e-subfact-fact", "source": "subfact", "target": "fact",    "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-fact-subfact", "source": "fact",    "target": "subfact", "label": "∇ DL1", "operator": "DL1" },
+
+  { "id": "e-fact-per10",    "source": "fact",    "target": "per10", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-subfact-per10", "source": "subfact", "target": "per10", "label": "Δ",     "operator": null  },
+
+  { "id": "e-x0-e2x",   "source": "x0",  "target": "e2x", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-e2x-x0",   "source": "e2x", "target": "x0",  "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-e2x-e3x",  "source": "e2x", "target": "e3x", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-e3x-e2x",  "source": "e3x", "target": "e2x", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-e2x-alt3",  "source": "e2x", "target": "alt3",  "label": "H0", "operator": "H0" },
+  { "id": "e-e2x-nalt3", "source": "e2x", "target": "nalt3", "label": "H1", "operator": "H1" },
+
+  { "id": "e-nalt1-nalt2", "source": "nalt1", "target": "nalt2", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-nalt2-nalt1", "source": "nalt2", "target": "nalt1", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-nalt2-nalt3", "source": "nalt2", "target": "nalt3", "label": "∇ DL1", "operator": "DL1" },
+  { "id": "e-nalt3-nalt2", "source": "nalt3", "target": "nalt2", "label": "⊕ Pos", "operator": "Pos" },
+  { "id": "e-zero-nalt1",  "source": "zero",  "target": "nalt1", "label": "H1",    "operator": "H1"  },
+  { "id": "e-nalt1-zero",  "source": "nalt1", "target": "zero",  "label": "H1",    "operator": "H1"  },
+  { "id": "e-x0-nalt2",    "source": "x0",    "target": "nalt2", "label": "H1",    "operator": "H1"  }
+]

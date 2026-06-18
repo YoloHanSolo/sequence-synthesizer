@@ -31,12 +31,13 @@ export default function ConnectionEdge({
     })
   }
 
-  const hasFwd  = data?.forward?.length  > 0
-  const hasBwd  = data?.backward?.length > 0
-  const pulse   = data?.pulse
-  const active  = data?.active
-  const opCount = (data?.forward?.length ?? 0) + (data?.backward?.length ?? 0)
-  const lineColor = active ? '#ffd60a' : '#2a2a4a'
+  const hasFwd         = data?.forward?.length  > 0
+  const hasBwd         = data?.backward?.length > 0
+  const pulse          = data?.pulse
+  const transformColor = data?.transformColor ?? null
+  const opCount        = (data?.forward?.length ?? 0) + (data?.backward?.length ?? 0)
+  const lineColor      = transformColor ?? '#2a2a4a'
+  const glowColor      = transformColor ? transformColor + '66' : 'none'
 
   return (
     <>
@@ -47,8 +48,8 @@ export default function ConnectionEdge({
         markerStart={!isSelf && hasBwd ? markerStart : undefined}
         style={{
           stroke: lineColor,
-          strokeWidth: active ? 2 : 1.5,
-          filter: active ? 'drop-shadow(0 0 4px #ffd60a66)' : 'none',
+          strokeWidth: transformColor ? 2 : 1.5,
+          filter: transformColor ? `drop-shadow(0 0 4px ${glowColor})` : 'none',
           transition: 'stroke 0.2s, stroke-width 0.2s',
         }}
       />
@@ -57,7 +58,7 @@ export default function ConnectionEdge({
         <path
           d={edgePath}
           fill="none"
-          stroke="#ffd60a"
+          stroke={transformColor ?? '#ffd60a'}
           strokeWidth={3}
           strokeDasharray="20 80"
           style={{
@@ -82,17 +83,17 @@ export default function ConnectionEdge({
             width: 16,
             height: 16,
             borderRadius: '50%',
-            background: active ? '#ffd60a' : '#13131a',
-            border: `1px solid ${active ? '#ffd60a' : '#2a2a5a'}`,
+            background: transformColor ? transformColor + '22' : '#13131a',
+            border: `1px solid ${transformColor ?? '#2a2a5a'}`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             fontSize: 9,
             fontFamily: 'JetBrains Mono, monospace',
-            color: active ? '#0d0d0f' : '#3a3a6a',
+            color: transformColor ?? '#3a3a6a',
             fontWeight: 'bold',
             transition: 'all 0.2s',
-            boxShadow: active ? '0 0 6px #ffd60a88' : 'none',
+            boxShadow: transformColor ? `0 0 6px ${transformColor}88` : 'none',
           }}>
             {opCount > 9 ? '…' : opCount}
           </div>
