@@ -1,5 +1,5 @@
 import React from 'react'
-import { MATRICES, MATRIX_DESCRIPTIONS, FUNCTIONS, FUNCTION_DESCRIPTIONS } from '../math/matrices'
+import { TRANSFORMATIONS, applyOp } from '../data/transformations'
 import { M } from '../math/format.jsx'
 
 const COLOR_MAP = {
@@ -64,8 +64,6 @@ export default function Inspector({ node }) {
 
 function OperatorPreview({ values, accent }) {
   const [open, setOpen] = React.useState(false)
-  const matNames = Object.keys(MATRICES)
-  const fnNames  = Object.keys(FUNCTIONS)
 
   return (
     <div>
@@ -79,61 +77,52 @@ function OperatorPreview({ values, accent }) {
       </button>
       {open && (
         <div className="flex flex-col gap-2">
-          {matNames.map(name => {
-            const M_mat = MATRICES[name]
-            const res = M_mat.map(row => row.reduce((s, c, j) => s + c * values[j], 0))
+          {TRANSFORMATIONS.map(t => {
+            const res = applyOp(t.id, values)
             return (
-              <div key={name} className="rounded p-2" style={{ background: '#0d0d14', border: '1px solid #1e1e2e' }}>
+              <div key={t.id} className="rounded p-2" style={{ background: '#0d0d14', border: '1px solid #1e1e2e' }}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold" style={{ color: accent }}>{name}</span>
+                  <span className="font-bold" style={{ color: accent }}>{t.id}</span>
                   <span style={{ color: '#3a3a5a', fontSize: '9px' }}>
-                    <M>{MATRIX_DESCRIPTIONS[name]}</M>
+                    <M>{t.description}</M>
                   </span>
                 </div>
-                <div className="flex flex-col gap-0.5">
-                  {M_mat.map((row, ri) => (
-                    <div key={ri} className="flex gap-1 items-center">
-                      <span style={{ color: '#2a2a4a', fontSize: '9px', width: 12 }}>{ri}</span>
-                      {row.map((cell, ci) => (
-                        <span key={ci}
-                          className="w-6 text-center rounded"
-                          style={{
-                            color: cell === 0 ? '#2a2a4a' : cell > 0 ? '#00d4ff' : '#ff2d55',
-                            fontSize: '10px',
-                          }}>
-                          {cell}
-                        </span>
-                      ))}
-                      <span style={{ color: '#4a4a6a' }}>→</span>
-                      <span style={{ color: '#ffd60a', fontSize: '10px' }} className="font-bold">{res[ri]}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )
-          })}
-          {fnNames.map(name => {
-            const res = FUNCTIONS[name](values)
-            return (
-              <div key={name} className="rounded p-2" style={{ background: '#0d0d14', border: '1px solid #1e1e2e' }}>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold" style={{ color: accent }}>{name}</span>
-                  <span style={{ color: '#3a3a5a', fontSize: '9px' }}>{FUNCTION_DESCRIPTIONS[name]}</span>
-                </div>
-                <div className="flex gap-1 items-center">
-                  <span style={{ color: '#4a4a6a', fontSize: '9px' }}>→</span>
-                  {res.map((v, i) => (
-                    <span key={i}
-                      className="w-6 text-center rounded"
-                      style={{
-                        color: v === 0 ? '#3a3a5a' : '#ffd60a',
-                        fontSize: '10px',
-                        background: '#1a1a2a',
-                      }}>
-                      {v}
-                    </span>
-                  ))}
-                </div>
+                {t.matrix ? (
+                  <div className="flex flex-col gap-0.5">
+                    {t.matrix.map((row, ri) => (
+                      <div key={ri} className="flex gap-1 items-center">
+                        <span style={{ color: '#2a2a4a', fontSize: '9px', width: 12 }}>{ri}</span>
+                        {row.map((cell, ci) => (
+                          <span key={ci}
+                            className="w-6 text-center rounded"
+                            style={{
+                              color: cell === 0 ? '#2a2a4a' : cell > 0 ? '#00d4ff' : '#ff2d55',
+                              fontSize: '10px',
+                            }}>
+                            {cell}
+                          </span>
+                        ))}
+                        <span style={{ color: '#4a4a6a' }}>→</span>
+                        <span style={{ color: '#ffd60a', fontSize: '10px' }} className="font-bold">{res[ri]}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex gap-1 items-center">
+                    <span style={{ color: '#4a4a6a', fontSize: '9px' }}>→</span>
+                    {res.map((v, i) => (
+                      <span key={i}
+                        className="w-6 text-center rounded"
+                        style={{
+                          color: v === 0 ? '#3a3a5a' : '#ffd60a',
+                          fontSize: '10px',
+                          background: '#1a1a2a',
+                        }}>
+                        {v}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             )
           })}

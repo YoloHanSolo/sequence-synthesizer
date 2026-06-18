@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MATRICES, MATRIX_LABELS, MATRIX_DESCRIPTIONS, matMul, fmtVec } from '../math/matrices'
+import { TRANSFORMATIONS, TRANSFORM_MAP, applyOp } from '../data/transformations'
 
 export default function PipelineSandbox({ onClose }) {
   const [raw, setRaw] = useState('[1, 0, 0, 0]')
@@ -34,7 +34,7 @@ export default function PipelineSandbox({ onClose }) {
       const history = [{ label: 'Input', vector: initial }]
       let current = initial
       for (const op of pipeline) {
-        current = matMul(MATRICES[op], current)
+        current = applyOp(op, current)
         history.push({ label: op, vector: [...current] })
       }
       setSteps(history)
@@ -95,19 +95,19 @@ export default function PipelineSandbox({ onClose }) {
           <div className="mb-4">
             <div className="mb-2" style={{ color: '#6a6a8a' }}>ADD OPERATOR</div>
             <div className="flex flex-wrap gap-2">
-              {MATRIX_LABELS.map(op => (
+              {TRANSFORMATIONS.map(t => (
                 <button
-                  key={op}
-                  onClick={() => addOp(op)}
+                  key={t.id}
+                  onClick={() => addOp(t.id)}
                   className="px-3 py-1 rounded text-xs font-bold transition-all"
                   style={{
                     background: '#1a1a2a',
-                    border: '1px solid #bf5af244',
-                    color: '#bf5af2',
+                    border: `1px solid ${t.color}44`,
+                    color: t.color,
                   }}
-                  title={MATRIX_DESCRIPTIONS[op]}
+                  title={t.description}
                 >
-                  {op}
+                  {t.id}
                 </button>
               ))}
             </div>

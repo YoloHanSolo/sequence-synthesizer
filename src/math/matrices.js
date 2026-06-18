@@ -1,33 +1,12 @@
-export const MATRICES = {
-  Pos:     [[1,0,0,0],[1,1,0,0],[1,2,1,0],[1,3,3,1]],
-  Neg:     [[-1,0,0,0],[-1,-1,0,0],[-1,-2,-1,0],[-1,-3,-3,-1]],
-  DL1:     [[1,0,0,0],[-1,1,0,0],[1,-2,1,0],[-1,3,-3,1]],
-  DL0:     [[-1,0,0,0],[1,-1,0,0],[-1,2,-1,0],[1,-3,3,-1]],
-  H0:      [[1,0,0,0],[-1,-1,0,0],[1,2,1,0],[-1,-3,-3,-1]],
-  H1:      [[-1,0,0,0],[1,1,0,0],[-1,-2,-1,0],[1,3,3,1]],
-  V0:      [[-1,0,0,0],[-1,1,0,0],[-1,2,-1,0],[-1,3,-3,1]],
-  V1:      [[1,0,0,0],[1,-1,0,0],[1,-2,1,0],[1,-3,3,-1]],
-  // 4×4 truncation of the 5×5 Seed-Generator M
-  // M×010* = 0120* ✓   M×0120* = 01660* ✓
-  SeedGen: [[0,0,0,0],[0,1,0,0],[0,2,2,0],[0,0,3,3]],
-  // 4×4 truncation of 5×5 diagonal P (multiply-by-x)
-  // P×x^k = x^(k+1): P×x^0=x^1 ✓  P×x^1=x^2 ✓  P×x^2=x^3 ✓  P×x^3=x^4 ✓
-  P:       [[0,0,0,0],[0,1,0,0],[0,0,2,0],[0,0,0,3]],
-}
-
-export const MATRIX_LABELS = Object.keys(MATRICES)
-
-export const MATRIX_DESCRIPTIONS = {
-  Pos:     'c^x → (c+1)^x',
-  Neg:     'c^x → -(c+1)^x',
-  DL1:     'c^x → (c-1)^x',
-  DL0:     'c^x → -(c-1)^x',
-  H0:      'c^x → (-1-c)^x',
-  H1:      'c^x → -(-1-c)^x',
-  V0:      'c^x → -(1+c)^x',
-  V1:      'c^x → (1-c)^x',
-  SeedGen: 'seed_k → seed_{k+1}',
-  P:       'x^k → x^{k+1}  (×x)',
+/** Multiply 4×4 matrix M by 4-element column vector v */
+export function matMul(M, v) {
+  const result = [0, 0, 0, 0]
+  for (let row = 0; row < 4; row++) {
+    for (let col = 0; col < 4; col++) {
+      result[row] += M[row][col] * v[col]
+    }
+  }
+  return result
 }
 
 /** Full 5×5 P matrix (for display only) */
@@ -47,42 +26,6 @@ export const SEEDGEN_FULL_5x5 = [
   [0, 0, 3, 3, 0],
   [0, 0, 0, 4, 4],
 ]
-
-/** Multiply 4x4 matrix M by 4-element column vector v */
-export function matMul(M, v) {
-  const result = [0, 0, 0, 0]
-  for (let row = 0; row < 4; row++) {
-    for (let col = 0; col < 4; col++) {
-      result[row] += M[row][col] * v[col]
-    }
-  }
-  return result
-}
-
-/** Non-linear transform functions (cannot be expressed as 4×4 matrices) */
-export const FUNCTIONS = {
-  // Triangle left column: repeatedly take |row[i+1]-row[i]|, recording leftmost each pass
-  AbsDiff: v => {
-    const a = [...v]
-    const result = [a[0]]
-    for (let len = v.length - 1; len > 0; len--) {
-      for (let i = 0; i < len; i++) a[i] = Math.abs(a[i + 1] - a[i])
-      result.push(a[0])
-    }
-    return result
-  },
-}
-
-export const FUNCTION_DESCRIPTIONS = {
-  AbsDiff: 'triangle left col: |Δ^k f(0)|',
-}
-
-/** Apply a named operator (matrix or function) to a 4-vector */
-export function applyOp(opName, v) {
-  if (MATRICES[opName]) return matMul(MATRICES[opName], v)
-  if (FUNCTIONS[opName]) return FUNCTIONS[opName](v)
-  throw new Error(`Unknown operator: ${opName}`)
-}
 
 /** Format vector for display */
 export function fmtVec(v) {

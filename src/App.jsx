@@ -12,12 +12,12 @@ import '@xyflow/react/dist/style.css'
 import SeqNode from './components/SeqNode'
 import ConnectionEdge from './components/ConnectionEdge'
 import { INITIAL_NODES, INITIAL_EDGES } from './data/graphData'
-import transformationsData from './data/transformations.json'
+import { TRANSFORMATIONS } from './data/transformations'
 
 const nodeTypes = { seqNode: SeqNode }
 const edgeTypes = { connection: ConnectionEdge }
 
-const FILTERABLE_TRANSFORMS = transformationsData.filter(t => t.filterable)
+const FILTERABLE_TRANSFORMS = TRANSFORMATIONS.filter(t => t.filterable)
 const TRANSFORM_COLOR = Object.fromEntries(
   FILTERABLE_TRANSFORMS.map(t => [t.id, t.color])
 )

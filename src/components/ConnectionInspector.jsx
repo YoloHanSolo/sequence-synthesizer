@@ -1,5 +1,6 @@
 import React from 'react'
-import { MATRICES, FUNCTIONS, SEEDGEN_FULL_5x5, P_FULL_5x5 } from '../math/matrices'
+import { TRANSFORM_MAP, applyOp } from '../data/transformations'
+import { SEEDGEN_FULL_5x5, P_FULL_5x5 } from '../math/matrices'
 import { M, mathFmt } from '../math/format.jsx'
 
 const COLOR_MAP = {
@@ -79,13 +80,7 @@ function PathGroup({ label, ops, srcVec, tgtVec, srcAccent, tgtAccent }) {
 
 function applyOpN(opName, v, steps) {
   let cur = v
-  for (let i = 0; i < steps; i++) {
-    const Mmat = MATRICES[opName]
-    const fn   = FUNCTIONS[opName]
-    if (Mmat) cur = Mmat.map(row => row.reduce((s, c, j) => s + c * cur[j], 0))
-    else if (fn) cur = fn(cur)
-    else return null
-  }
+  for (let i = 0; i < steps; i++) cur = applyOp(opName, cur)
   return cur
 }
 
@@ -121,7 +116,7 @@ function OpRow({ op, srcVec, tgtVec, srcAccent, tgtAccent }) {
         />
       </div>
 
-      {op.operator && MATRICES[op.operator] && steps === 1 && <MatrixMini M={MATRICES[op.operator]} accent={srcAccent} opName={op.operator} />}
+      {op.operator && TRANSFORM_MAP[op.operator]?.matrix && steps === 1 && <MatrixMini M={TRANSFORM_MAP[op.operator].matrix} accent={srcAccent} opName={op.operator} />}
     </div>
   )
 }
