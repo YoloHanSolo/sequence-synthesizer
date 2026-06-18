@@ -119,6 +119,7 @@ const pulseTimer = useRef(null)
       if (pathVisible(fwdPaths)) {
         const activeOp = fwdPaths.map(p => p.operator).filter(Boolean).find(op => activeTransforms.has(op))
         const transformColor = activeOp ? TRANSFORM_COLOR[activeOp] : null
+        const markerColor = transformColor ?? '#2a2a4a'
         const handles = isSelf ? {} : getHandles(edge.source, edge.target, nodePos)
         const edgeId = `${edge.id}-fwd`
         result.push({
@@ -127,6 +128,7 @@ const pulseTimer = useRef(null)
           source: edge.source,
           target: edge.target,
           ...handles,
+          markerEnd: { type: MarkerType.ArrowClosed, color: markerColor, width: 14, height: 14 },
           data: { ...edge.data, forward: fwdPaths, backward: [], pulse: pulseEdgeId === edgeId, transformColor },
         })
       }
@@ -134,6 +136,7 @@ const pulseTimer = useRef(null)
       if (!isSelf && pathVisible(bwdPaths)) {
         const activeOp = bwdPaths.map(p => p.operator).filter(Boolean).find(op => activeTransforms.has(op))
         const transformColor = activeOp ? TRANSFORM_COLOR[activeOp] : null
+        const markerColor = transformColor ?? '#2a2a4a'
         const handles = getHandles(edge.target, edge.source, nodePos)
         const edgeId = `${edge.id}-bwd`
         result.push({
@@ -142,6 +145,7 @@ const pulseTimer = useRef(null)
           source: edge.target,
           target: edge.source,
           ...handles,
+          markerEnd: { type: MarkerType.ArrowClosed, color: markerColor, width: 14, height: 14 },
           data: { ...edge.data, forward: bwdPaths, backward: [], pulse: pulseEdgeId === edgeId, transformColor },
         })
       }
